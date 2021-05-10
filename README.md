@@ -1,2 +1,2 @@
 # Epidemic_model_simulator
-Project from PV178, simulator for epidemic models in C#.
+Simulator for simple epidemic models written in C#, a project for the PV178 course.
