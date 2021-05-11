@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.InputHandling
+namespace Project.FileHandling
 {
     public class ModelParser
     {

@@ -12,7 +12,7 @@ namespace Project.Models
 
         public SirsModel(int id) : base(id) 
         {
-            type = ModelType.SIRS;
+            Type = ModelType.SIRS;
         }
     }
 }

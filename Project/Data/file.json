@@ -1,0 +1,10 @@
+{
+  "SusceptibleInit": 9999999,
+  "InfectedInit": 1,
+  "RemovedInit": 0,
+  "Type": "SIR",
+  "ID": 1,
+  "PopulationSize": 10000000,
+  "TimeInfection": 14,
+  "R0": 3
+}

@@ -1,8 +1,10 @@
 ﻿using System;
-using Project.InputHandling;
+using Project.FileHandling;
 using Project.Models;
 using Project.Plotting;
 using Project.Simulators;
+using System.Text.Json;
+using System.IO;
 
 namespace Project
 {
@@ -30,6 +32,9 @@ namespace Project
                 plotCreator.AddCurve(resultCurves[0], resultCurves[i], curveLabels[i - 1]);
             }
             plotCreator.CreatePicture(Constants.DataFolderPath + "picture.png");
+
+
+            await JsonModelSerializer("file.json");
         }
     }
 }

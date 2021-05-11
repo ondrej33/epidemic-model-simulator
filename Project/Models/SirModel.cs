@@ -14,8 +14,8 @@ namespace Project.Models
 
         public SirModel(int id_num) 
         {
-            type = ModelType.SIR;
-            id = id_num;
+            Type = ModelType.SIR;
+            ID = id_num;
         }
     }
 }
