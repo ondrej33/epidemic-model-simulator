@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Project.Plotting
 {
     /* Creates the file for picture and some basics of graph like axes.. */
@@ -20,9 +15,12 @@ namespace Project.Plotting
             plot.PlotScatter(xPoints, yPoints, label: curveLabel, lineWidth: 2, markerSize: 0);
         }
 
-        public void CreatePicture(string filePath)
+        public void CreatePicture(string filePath, string title)
         {
             plot.Legend();
+            plot.Title(title);
+            plot.YLabel("Number of people");
+            plot.XLabel("Days");
             plot.SaveFig(filePath);
         }
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Project.Models
 {
     public class SirModel : BaseModel
@@ -12,6 +7,7 @@ namespace Project.Models
         public int InfectedInit { get; set; }
         public int RemovedInit { get; set; }
 
+        public SirModel() { }
         public SirModel(int id_num) 
         {
             Type = ModelType.SIR;

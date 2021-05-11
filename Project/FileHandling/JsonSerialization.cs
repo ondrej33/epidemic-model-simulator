@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Project.FIleHandling
+namespace Project.FileHandling
 {
-    public static class JsonModelSerializer
+    public static class JsonSerialization
     {
         public static async Task SerializeModel(SirModel sirModel, string fileName)
         {
@@ -21,6 +21,15 @@ namespace Project.FIleHandling
 
             using FileStream createStream = File.Create(jsonFileName);
             await JsonSerializer.SerializeAsync(createStream, sirModel, options: options);
+        }
+
+        public static async Task<SirModel> DeserializeModel(string fileName)
+        {
+            string jsonFileName = Constants.DataFolderPath + fileName;
+            using FileStream openStream = File.OpenRead(jsonFileName);
+
+            var sirModel = await JsonSerializer.DeserializeAsync<SirModel>(openStream);
+            return sirModel;
         }
     }
 }

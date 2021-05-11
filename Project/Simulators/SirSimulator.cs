@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Project.Models;
 
@@ -43,5 +40,13 @@ namespace Project.Simulators
             }
             return new List<double[]> { xVal, S, I, R };
         }
+
+        /* Async wrapper for above method */
+        public async Task<List<double[]>> SimulateAsync(int time_period, double scale)
+        {
+            var resultList = await Task.Run(() => Simulate(time_period, scale));
+            return resultList;
+        }
+
     }
 }
