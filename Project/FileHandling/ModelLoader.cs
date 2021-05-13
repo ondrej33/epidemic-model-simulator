@@ -13,9 +13,9 @@ namespace Project.FileHandling
          * If format is not correct for corresponding type, throws */
         public static Task<SirModel> LoadModel(string fileName, FormatType formatType)
         {
+
             // TODO
-            switch (formatType)
-            {
+            switch (formatType) { 
                 case FormatType.JSON:
                     return LoadJson(fileName);
                 case FormatType.XML:
