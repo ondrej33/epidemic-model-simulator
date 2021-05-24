@@ -6,5 +6,6 @@
   "ID": 1,
   "PopulationSize": 10000000,
   "TimeInfection": 14,
-  "R0": 3
+  "R0": 3,
+  "TimeToSimulate": 300
 }

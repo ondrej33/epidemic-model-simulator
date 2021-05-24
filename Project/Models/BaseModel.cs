@@ -1,4 +1,6 @@
 ﻿using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using System;
 
 namespace Project.Models
 {
@@ -15,5 +17,13 @@ namespace Project.Models
         public int PopulationSize { get; set; }
         public int TimeInfection { get; set; }
         public double R0 { get; set; }
+
+        // dictionary describing events, tuple of : parameter to change, in what time, to which value 
+        [JsonIgnore]
+        public List<(ParameterType param, double time, double newVal)> Events { get; set; }
+
+        // this will tell us how long simulation will be
+        public int TimeToSimulate { get; set; }
+
     }
 }

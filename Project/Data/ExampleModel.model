@@ -1,20 +1,14 @@
 ﻿ModelType: SIR
-
-.
-
+-
 N: 10000000
 Tinf 14
 R0: 3
 Time: 300
-
-.
-
+-
 S: 9999999
 I: 1
 R: 0
-
-.
-
-Event1: 50, R0=2.5
-Event2: 100, R0=2
-Event3: 75, Tinf=10
+-
+Event: 50, R0=2.5
+Event: 100, R0=2
+Event: 75, Tinf=10

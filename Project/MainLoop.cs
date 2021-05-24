@@ -24,6 +24,7 @@ namespace Project
                 SirModel model;
                 try
                 {
+                    // TODO
                     model = await ModelLoader.LoadModel(path, FormatType.JSON);
                 }
                 catch (BadModelFormatException e)
@@ -37,8 +38,7 @@ namespace Project
                 simulator.Model = model;
 
                 // we do the computations
-                var time = 300;
-                var resultCurves = await simulator.SimulateAsync(time, 0.1);
+                var resultCurves = await simulator.SimulateAsync(model.TimeToSimulate, 0.1);
 
                 // and we create the graphs
                 var curveLabels = new string[] { "S", "I", "R" };
