@@ -1,9 +1,7 @@
 ﻿using Project.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -44,18 +42,17 @@ namespace Project.FileHandling
             string fileContent = File.ReadAllText(fileName);
 
             // define the regexes
-            var modelTypeRegex = new Regex(@"ModelType:[ ]+(SIR|SIRS)");
-            var NRegex = new Regex(@"N:[ ]+(\d+)");
-            var TinfRegex = new Regex(@"Tinf:[ ]+(\d+)");
-            var R0Regex = new Regex(@"R0:[ ]+(\d+)");
-            var TimeRegex = new Regex(@"Time:[ ]+(\d+)");
+            var modelTypeRegex = new Regex(@"ModelType:[ ]*(SIR|SIRS)");
+            var NRegex = new Regex(@"N:[ ]*(\d+)");
+            var TinfRegex = new Regex(@"Tinf:[ ]*(\d+)");
+            var R0Regex = new Regex(@"R0:[ ]*(\d+|\d+\.\d+)");
+            var TimeRegex = new Regex(@"Time:[ ]*(\d+)");
 
-            var SRegex = new Regex(@"S:[ ]+(\d+)");
-            var IRegex = new Regex(@"I:[ ]+(\d+)");
-            var RRegex = new Regex(@"R:[ ]+(\d+)");
+            var SRegex = new Regex(@"S:[ ]*(\d+)");
+            var IRegex = new Regex(@"I:[ ]*(\d+)");
+            var RRegex = new Regex(@"R:[ ]*(\d+)");
 
-            var eventRegex = new Regex(@"Event:[ ]+(\d+)[ ]+,[ ]+(R0|Tinf|N)=(\d+)");
-
+            var eventRegex = new Regex(@"Event:[ ]*(\d+|\d+\.\d+)[ ]*,[ ]*(R0|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)");
             // TODO - check modelTypeRegex and choose the right type of the model
 
             // find the regex matches

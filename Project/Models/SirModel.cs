@@ -7,7 +7,9 @@ namespace Project.Models
         public int InfectedInit { get; set; }
         public int RemovedInit { get; set; }
 
-        public SirModel() { }
+        public SirModel()
+            => Type = ModelType.SIR;
+
         public SirModel(int id_num) 
         {
             Type = ModelType.SIR;

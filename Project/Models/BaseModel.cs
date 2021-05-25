@@ -25,5 +25,8 @@ namespace Project.Models
         // this will tell us how long simulation will be
         public int TimeToSimulate { get; set; }
 
+        public BaseModel()
+            => Events = new List<(ParameterType param, double time, double newVal)>();
+
     }
 }

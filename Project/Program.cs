@@ -1,8 +1,5 @@
 ﻿using System;
 using Project.FileHandling;
-using Project.Models;
-using Project.Plotting;
-using Project.Simulators;
 using Project.Exceptions;
 using System.Threading.Tasks;
 using System.Collections.Generic;

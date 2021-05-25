@@ -5,9 +5,10 @@ namespace Project.Models
     {
         public int TimeRecovery { get; set; }
 
+        public SirsModel()
+            => Type = ModelType.SIRS;
+
         public SirsModel(int id) : base(id) 
-        {
-            Type = ModelType.SIRS;
-        }
+            => Type = ModelType.SIRS;
     }
 }

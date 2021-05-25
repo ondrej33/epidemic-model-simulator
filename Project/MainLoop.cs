@@ -25,7 +25,7 @@ namespace Project
                 try
                 {
                     // TODO
-                    model = await ModelLoader.LoadModel(path, FormatType.JSON);
+                    model = await ModelLoader.LoadModel(path, FormatType.MyFormat);
                 }
                 catch (BadModelFormatException e)
                 {
@@ -48,7 +48,7 @@ namespace Project
                     plotCreator.AddCurve(resultCurves[0], resultCurves[i], curveLabels[i - 1]);
                 }
                 plotCreator.CreatePicture(Constants.DataFolderPath + "picture.png",
-                                          model.Type.ToString() + model.ID.ToString());
+                                          model.Type.ToString() + " id=" + model.ID.ToString());
             }
         }
     }

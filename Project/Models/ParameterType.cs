@@ -6,7 +6,6 @@ namespace Project.Models
     public enum ParameterType
     {
         R0,
-        Tinf,
-        N
+        Tinf
     }
 }
