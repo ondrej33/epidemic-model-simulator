@@ -28,11 +28,15 @@ namespace GUI
             List<string> modelPaths;
             modelPaths = InputListParser.GetFilePaths(inputPath);
             // TODO - print a number of paths received
-
-            // !! THIS METHOD THROWS !!
+               
+            if (modelPaths.Count() == 0)
+            {
+                // TODO if we got no model, error message
+            }
 
             // we will iterate through all models
             int id = 0;
+            int counter = 0;
             foreach (var path in modelPaths)
             {
                 // first we load the model
@@ -44,10 +48,11 @@ namespace GUI
                     model.ID = id;
                     id++;
                 }
+                // TODO - check if other exception arent possible 
                 catch (BadModelFormatException e)
                 {
                     // TODO - inform user something happened
-                    // TODO - check if other exception arent possible 
+                    counter++;
                     continue;
                 }
 
@@ -69,6 +74,12 @@ namespace GUI
                 // TODO - async
                 plotCreator.CreatePicture(Constants.DataFolderPath + $"picture{model.ID}.png",
                                           model.Type.ToString() + $" id={model.ID}");
+
+                counter++;
+                ProgressBar.Invoke(new Action(() =>
+                {
+                    ProgressBar.Value = (int)((float)counter / modelPaths.Count() * 100);
+                }));
             }
         }
 
@@ -76,12 +87,26 @@ namespace GUI
         {
             try
             {
+                ProgressBar.Invoke(new Action(() =>
+                {
+                    ProgressBar.Value = 0;
+                }));
                 await MainProgram(FileBrowser.Path);
             }
             catch (Exception exc)
             {
                 // TODO - HANDLE EXCEPTIONS
             }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            // TODO - switch from file mode to interactive mode
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // TODO - switch to model creating form
         }
     }
 }

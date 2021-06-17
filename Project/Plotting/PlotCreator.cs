@@ -12,7 +12,7 @@ namespace Project.Plotting
 
         public void AddCurve(double[] xPoints, double[] yPoints, string curveLabel)
         {
-            plot.PlotScatter(xPoints, yPoints, label: curveLabel, lineWidth: 2, markerSize: 0);
+            plot.AddScatter(xPoints, yPoints, label: curveLabel, lineWidth: 2, markerSize: 0);
         }
 
         public void CreatePicture(string filePath, string title)
