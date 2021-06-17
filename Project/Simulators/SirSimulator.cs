@@ -4,9 +4,9 @@ using Project.Models;
 
 namespace Project.Simulators
 {
-    public class SirSimulator : ISimulator
+    public class Simulator : ISimulator
     {
-        public SirModel Model { get; set; }
+        public BaseModel Model { get; set; }
         
         /* Returns list where first item contains xValues for all points and
          * every other entry contains yValues for each curve. */
@@ -52,6 +52,13 @@ namespace Project.Simulators
                 var dS = -infectConst * (S[t-1] * I[t-1] / Model.PopulationSize);
                 var dR = I[t-1] / Model.TimeInfection;
                 var dI = -dS - dR;
+
+                // now we must add one more transition in case of SIRS model
+                if (Model.Type == ModelType.SIRS)
+                {
+                    dS += R[t-1] / (Model as SirsModel).TimeImmune;
+                    dR -= R[t-1] / (Model as SirsModel).TimeImmune;
+                }
 
                 S[t] = S[t - 1] + dS * scale;
                 I[t] = I[t - 1] + dI * scale;

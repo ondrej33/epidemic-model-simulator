@@ -1,13 +1,10 @@
 ﻿using Project.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Project.FileHandling
 {
-    /* Class that will be used to save (convert) models in different formats */
+    /* Class that will be used to save (convert) models in different formats 
+     * Json is used more or less for testing purposes. */
     public class ModelSaver
     {
         public static Task SaveJson(SirModel model, string fileName)

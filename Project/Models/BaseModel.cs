@@ -18,6 +18,11 @@ namespace Project.Models
         public int TimeInfection { get; set; }
         public double R0 { get; set; }
 
+        // Attributes common for both SIR and SIRS models
+        public int SusceptibleInit { get; set; }
+        public int InfectedInit { get; set; }
+        public int RemovedInit { get; set; }
+
         // dictionary describing events, tuple of : parameter to change, in what time, to which value 
         [JsonIgnore]
         public List<(ParameterType param, double time, double newVal)> Events { get; set; }

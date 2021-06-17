@@ -2,13 +2,13 @@
 -
 N: 10000000
 Tinf: 14
-R0: 3
+R0: 2
 Time: 300
 -
 S: 9999999
 I: 1
 R: 0
 -
-Event: 50, R0= 4.5
+Event: 50, R0= 5
 Event: 100, R0= 2.5
 Event: 75, Tinf= 20

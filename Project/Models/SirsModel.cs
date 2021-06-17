@@ -3,7 +3,7 @@ namespace Project.Models
 {
     public class SirsModel : SirModel
     {
-        public int TimeRecovery { get; set; }
+        public int TimeImmune { get; set; }
 
         public SirsModel()
             => Type = ModelType.SIRS;

@@ -7,8 +7,6 @@ namespace Project.Models
         [EnumMember(Value = "SIR")]
         SIR,
         [EnumMember(Value = "SIRS")]
-        SIRS,
-        [EnumMember(Value = "SEIR")]
-        SEIR
+        SIRS
     }
 }

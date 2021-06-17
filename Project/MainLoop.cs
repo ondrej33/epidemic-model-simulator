@@ -18,14 +18,17 @@ namespace Project
         public async Task IterateThroughModelsAsync()
         {
             // we will iterate through all models
+            int id = 0;
             foreach(var path in modelPaths)
             {
                 // first we load the model
-                SirModel model;
+                BaseModel model;
                 try
                 {
-                    // TODO
-                    model = await ModelLoader.LoadModel(path, FormatType.MyFormat);
+                    // TODO - more data types
+                    model = await ModelLoader.LoadModel(path);
+                    model.ID = id;
+                    id++;
                 }
                 catch (BadModelFormatException e)
                 {
@@ -34,7 +37,7 @@ namespace Project
                 }
 
                 // then we create a corresponding simulator
-                var simulator = new SirSimulator();
+                var simulator = new Simulator();
                 simulator.Model = model;
 
                 // we do the computations
@@ -47,8 +50,10 @@ namespace Project
                 {
                     plotCreator.AddCurve(resultCurves[0], resultCurves[i], curveLabels[i - 1]);
                 }
-                plotCreator.CreatePicture(Constants.DataFolderPath + "picture.png",
-                                          model.Type.ToString() + " id=" + model.ID.ToString());
+
+                // TODO - async
+                plotCreator.CreatePicture(Constants.DataFolderPath + $"picture{model.ID}.png",
+                                          model.Type.ToString() + $" id={model.ID}");
             }
         }
     }
