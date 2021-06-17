@@ -29,20 +29,20 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.fileBrowser1 = new GUI.FileBrowser();
+            this.FileBrowser = new GUI.FileBrowser();
             this.StartButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.ProgressLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // fileBrowser1
+            // FileBrowser
             // 
-            this.fileBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.FileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBrowser1.Location = new System.Drawing.Point(62, 12);
-            this.fileBrowser1.Name = "fileBrowser1";
-            this.fileBrowser1.Size = new System.Drawing.Size(769, 43);
-            this.fileBrowser1.TabIndex = 0;
+            this.FileBrowser.Location = new System.Drawing.Point(62, 12);
+            this.FileBrowser.Name = "FileBrowser";
+            this.FileBrowser.Size = new System.Drawing.Size(769, 43);
+            this.FileBrowser.TabIndex = 0;
             // 
             // StartButton
             // 
@@ -52,6 +52,7 @@ namespace GUI
             this.StartButton.TabIndex = 1;
             this.StartButton.Text = "Start computation";
             this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // progressBar1
             // 
@@ -77,7 +78,7 @@ namespace GUI
             this.Controls.Add(this.ProgressLabel);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.fileBrowser1);
+            this.Controls.Add(this.FileBrowser);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -88,7 +89,7 @@ namespace GUI
 
         #endregion
 
-        private FileBrowser fileBrowser1;
+        private FileBrowser FileBrowser;
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label ProgressLabel;

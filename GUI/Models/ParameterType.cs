@@ -1,5 +1,5 @@
 ﻿
-namespace Project.Models
+namespace GUI.Models
 {
     /* Enum for parameters, is just to discribe which parameter is
      * affected by an event */

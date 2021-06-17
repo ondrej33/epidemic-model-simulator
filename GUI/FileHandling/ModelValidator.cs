@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 
 
-namespace Project.FileHandling
+namespace GUI.FileHandling
 {
     /* Validates the format of file with model description, 
      * at this time accepts SIR and SIRS model types */

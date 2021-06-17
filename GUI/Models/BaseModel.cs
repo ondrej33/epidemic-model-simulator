@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace Project.Models
+namespace GUI.Models
 {
     public abstract class BaseModel
     {

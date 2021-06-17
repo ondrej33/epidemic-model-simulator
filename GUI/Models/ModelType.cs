@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Project.Models
+namespace GUI.Models
 {
     public enum ModelType
     {

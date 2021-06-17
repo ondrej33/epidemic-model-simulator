@@ -1,9 +1,9 @@
-﻿using Project.Models;
+﻿using GUI.Models;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Project.FileHandling
+namespace GUI.FileHandling
 {
     public static class JsonSerialization
     {

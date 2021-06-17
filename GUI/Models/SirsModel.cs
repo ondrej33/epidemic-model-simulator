@@ -1,5 +1,5 @@
 ﻿
-namespace Project.Models
+namespace GUI.Models
 {
     public class SirsModel : SirModel
     {

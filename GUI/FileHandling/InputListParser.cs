@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Project.Exceptions;
+using GUI.Exceptions;
 
-namespace Project.FileHandling
+namespace GUI.FileHandling
 {
     /* Input to the program is a file containing paths to all of the models
      * This class will be used to check it and parse those paths to a list */

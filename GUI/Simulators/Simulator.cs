@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Project.Models;
+using GUI.Models;
 
-namespace Project.Simulators
+namespace GUI.Simulators
 {
     public class Simulator : ISimulator
     {

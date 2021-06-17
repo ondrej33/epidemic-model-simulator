@@ -1,5 +1,5 @@
 ﻿
-namespace Project.FileHandling
+namespace GUI.FileHandling
 {
     public enum FormatType
     {

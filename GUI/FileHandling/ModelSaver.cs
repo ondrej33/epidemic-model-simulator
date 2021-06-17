@@ -1,7 +1,7 @@
-﻿using Project.Models;
+﻿using GUI.Models;
 using System.Threading.Tasks;
 
-namespace Project.FileHandling
+namespace GUI.FileHandling
 {
     /* Class that will be used to save (convert) models in different formats 
      * Json is used more or less for testing purposes. */

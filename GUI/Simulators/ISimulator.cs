@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Project.Simulators
+namespace GUI.Simulators
 {
     public interface ISimulator
     {
