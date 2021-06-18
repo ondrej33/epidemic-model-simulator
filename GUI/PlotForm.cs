@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.Plotting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,24 +13,31 @@ namespace GUI
 {
     public partial class PlotForm : Form
     {
-        public PlotForm()
+        public List<(List<double[]> coords, string name)> ListGraphs { get; set; }
+
+        private int index = 0;
+
+        public PlotForm(List<(List<double[]> coords, string name)> listGraphs)
         {
             InitializeComponent();
+            ListGraphs = listGraphs;
+
+            // we know we have >1 graphs, otherwise we could not get there
+            List<double[]>  firstGraphCoords = listGraphs[0].coords;
+            string firstGraphName = listGraphs[0].name;
+            PlotCreator.PrepareGraphSIR(PlotWindow.Plot, firstGraphCoords);
+            PlotCreator.LabelGraph(PlotWindow.Plot, firstGraphName);
         }
 
-        private void Plot_Load(object sender, EventArgs e)
+        private void NextButton_Click(object sender, EventArgs e)
         {
-            // PlotWindow.Plot.AddScatter()
-        }
+            index = (index + 1) % ListGraphs.Count(); // circular
+            List<double[]> newGraphCoords = ListGraphs[index].coords;
+            string newGraphName = ListGraphs[index].name;
+            PlotWindow.Plot.Clear();
 
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-            // TODO - switch graphs
-        }
-
-        private void PlotForm_Load(object sender, EventArgs e)
-        {
-            // TODO - load graphs
+            PlotCreator.PrepareGraphSIR(PlotWindow.Plot, newGraphCoords);
+            PlotWindow.Plot.Title(newGraphName);
         }
     }
 }

@@ -13,6 +13,10 @@ namespace GUI.FileHandling
          * If not, throws an exception */
         public static List<string> GetFilePaths(string inputPath)
         {
+            if (!File.Exists(inputPath))
+            {
+                throw new BadPathException(inputPath);
+            }
             List<string> filePaths = File.ReadLines(inputPath).ToList();
             foreach(var path in filePaths)
             {

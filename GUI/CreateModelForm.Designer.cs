@@ -42,25 +42,43 @@ namespace GUI
             this.TinfTB = new System.Windows.Forms.TextBox();
             this.PopTB = new System.Windows.Forms.TextBox();
             this.RTB = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TimmuTB = new System.Windows.Forms.TextBox();
+            this.EventView = new System.Windows.Forms.ListView();
+            this.Parameter = new System.Windows.Forms.ColumnHeader();
+            this.Time = new System.Windows.Forms.ColumnHeader();
+            this.Value = new System.Windows.Forms.ColumnHeader();
+            this.EventLabel = new System.Windows.Forms.Label();
+            this.AddEventBtn = new System.Windows.Forms.Button();
+            this.EventValueTB = new System.Windows.Forms.TextBox();
+            this.EventParamTB = new System.Windows.Forms.TextBox();
+            this.EventTimeTB = new System.Windows.Forms.TextBox();
+            this.EventValueLabel = new System.Windows.Forms.Label();
+            this.EventTimeLabel = new System.Windows.Forms.Label();
+            this.EventParamLabel = new System.Windows.Forms.Label();
+            this.TimeTB = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TimeLabel = new System.Windows.Forms.Label();
             this.TimmuLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // formsPlot1
             // 
-            this.formsPlot1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.formsPlot1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
-            this.formsPlot1.Location = new System.Drawing.Point(21, 107);
+            this.formsPlot1.Location = new System.Drawing.Point(21, 114);
             this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(526, 372);
+            this.formsPlot1.Size = new System.Drawing.Size(731, 398);
             this.formsPlot1.TabIndex = 0;
             // 
             // PopulationLabel
             // 
+            this.PopulationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.PopulationLabel.AutoSize = true;
-            this.PopulationLabel.Location = new System.Drawing.Point(47, 15);
+            this.PopulationLabel.Location = new System.Drawing.Point(79, 11);
             this.PopulationLabel.Name = "PopulationLabel";
             this.PopulationLabel.Size = new System.Drawing.Size(85, 20);
             this.PopulationLabel.TabIndex = 1;
@@ -68,8 +86,10 @@ namespace GUI
             // 
             // TinfLabel
             // 
+            this.TinfLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.TinfLabel.AutoSize = true;
-            this.TinfLabel.Location = new System.Drawing.Point(379, 15);
+            this.TinfLabel.Location = new System.Drawing.Point(681, 8);
             this.TinfLabel.Name = "TinfLabel";
             this.TinfLabel.Size = new System.Drawing.Size(112, 20);
             this.TinfLabel.TabIndex = 2;
@@ -77,8 +97,10 @@ namespace GUI
             // 
             // R0Label
             // 
+            this.R0Label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.R0Label.AutoSize = true;
-            this.R0Label.Location = new System.Drawing.Point(47, 61);
+            this.R0Label.Location = new System.Drawing.Point(79, 48);
             this.R0Label.Name = "R0Label";
             this.R0Label.Size = new System.Drawing.Size(29, 20);
             this.R0Label.TabIndex = 3;
@@ -86,8 +108,10 @@ namespace GUI
             // 
             // SLabel
             // 
+            this.SLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.SLabel.AutoSize = true;
-            this.SLabel.Location = new System.Drawing.Point(587, 141);
+            this.SLabel.Location = new System.Drawing.Point(385, 6);
             this.SLabel.Name = "SLabel";
             this.SLabel.Size = new System.Drawing.Size(45, 20);
             this.SLabel.TabIndex = 4;
@@ -95,8 +119,10 @@ namespace GUI
             // 
             // ILabel
             // 
+            this.ILabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ILabel.AutoSize = true;
-            this.ILabel.Location = new System.Drawing.Point(587, 179);
+            this.ILabel.Location = new System.Drawing.Point(385, 44);
             this.ILabel.Name = "ILabel";
             this.ILabel.Size = new System.Drawing.Size(41, 20);
             this.ILabel.TabIndex = 5;
@@ -104,8 +130,10 @@ namespace GUI
             // 
             // RLabel
             // 
+            this.RLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.RLabel.AutoSize = true;
-            this.RLabel.Location = new System.Drawing.Point(587, 220);
+            this.RLabel.Location = new System.Drawing.Point(385, 85);
             this.RLabel.Name = "RLabel";
             this.RLabel.Size = new System.Drawing.Size(46, 20);
             this.RLabel.TabIndex = 6;
@@ -113,69 +141,215 @@ namespace GUI
             // 
             // ITB
             // 
-            this.ITB.Location = new System.Drawing.Point(676, 176);
+            this.ITB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ITB.Location = new System.Drawing.Point(466, 45);
             this.ITB.Name = "ITB";
-            this.ITB.Size = new System.Drawing.Size(166, 27);
+            this.ITB.Size = new System.Drawing.Size(119, 27);
             this.ITB.TabIndex = 7;
             // 
             // STB
             // 
-            this.STB.Location = new System.Drawing.Point(676, 138);
+            this.STB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.STB.Location = new System.Drawing.Point(466, 7);
             this.STB.Name = "STB";
-            this.STB.Size = new System.Drawing.Size(166, 27);
+            this.STB.Size = new System.Drawing.Size(119, 27);
             this.STB.TabIndex = 8;
             // 
             // R0TB
             // 
-            this.R0TB.Location = new System.Drawing.Point(163, 58);
+            this.R0TB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.R0TB.Location = new System.Drawing.Point(183, 45);
             this.R0TB.Name = "R0TB";
-            this.R0TB.Size = new System.Drawing.Size(166, 27);
+            this.R0TB.Size = new System.Drawing.Size(115, 27);
             this.R0TB.TabIndex = 9;
             // 
             // TinfTB
             // 
-            this.TinfTB.Location = new System.Drawing.Point(495, 12);
+            this.TinfTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TinfTB.Location = new System.Drawing.Point(818, 7);
             this.TinfTB.Name = "TinfTB";
-            this.TinfTB.Size = new System.Drawing.Size(166, 27);
+            this.TinfTB.Size = new System.Drawing.Size(115, 27);
             this.TinfTB.TabIndex = 10;
             // 
             // PopTB
             // 
-            this.PopTB.Location = new System.Drawing.Point(163, 12);
+            this.PopTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.PopTB.Location = new System.Drawing.Point(183, 8);
             this.PopTB.Name = "PopTB";
-            this.PopTB.Size = new System.Drawing.Size(166, 27);
+            this.PopTB.Size = new System.Drawing.Size(113, 27);
             this.PopTB.TabIndex = 11;
             // 
             // RTB
             // 
-            this.RTB.Location = new System.Drawing.Point(676, 213);
+            this.RTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.RTB.Location = new System.Drawing.Point(466, 82);
             this.RTB.Name = "RTB";
-            this.RTB.Size = new System.Drawing.Size(166, 27);
+            this.RTB.Size = new System.Drawing.Size(119, 27);
             this.RTB.TabIndex = 12;
             // 
-            // textBox3
+            // TimmuTB
             // 
-            this.textBox3.Location = new System.Drawing.Point(497, 58);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(166, 27);
-            this.textBox3.TabIndex = 14;
+            this.TimmuTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TimmuTB.Location = new System.Drawing.Point(818, 48);
+            this.TimmuTB.Name = "TimmuTB";
+            this.TimmuTB.Size = new System.Drawing.Size(115, 27);
+            this.TimmuTB.TabIndex = 14;
+            // 
+            // EventView
+            // 
+            this.EventView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Parameter,
+            this.Time,
+            this.Value});
+            this.EventView.HideSelection = false;
+            this.EventView.Location = new System.Drawing.Point(762, 297);
+            this.EventView.Name = "EventView";
+            this.EventView.Size = new System.Drawing.Size(305, 182);
+            this.EventView.TabIndex = 15;
+            this.EventView.UseCompatibleStateImageBehavior = false;
+            // 
+            // EventLabel
+            // 
+            this.EventLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventLabel.AutoSize = true;
+            this.EventLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EventLabel.Location = new System.Drawing.Point(762, 136);
+            this.EventLabel.Name = "EventLabel";
+            this.EventLabel.Size = new System.Drawing.Size(72, 28);
+            this.EventLabel.TabIndex = 16;
+            this.EventLabel.Text = "Events:";
+            // 
+            // AddEventBtn
+            // 
+            this.AddEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddEventBtn.Location = new System.Drawing.Point(971, 262);
+            this.AddEventBtn.Name = "AddEventBtn";
+            this.AddEventBtn.Size = new System.Drawing.Size(96, 30);
+            this.AddEventBtn.TabIndex = 17;
+            this.AddEventBtn.Text = "Add event";
+            this.AddEventBtn.UseVisualStyleBackColor = true;
+            // 
+            // EventValueTB
+            // 
+            this.EventValueTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventValueTB.Location = new System.Drawing.Point(965, 216);
+            this.EventValueTB.Name = "EventValueTB";
+            this.EventValueTB.Size = new System.Drawing.Size(101, 27);
+            this.EventValueTB.TabIndex = 23;
+            // 
+            // EventParamTB
+            // 
+            this.EventParamTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventParamTB.Location = new System.Drawing.Point(965, 141);
+            this.EventParamTB.Name = "EventParamTB";
+            this.EventParamTB.Size = new System.Drawing.Size(101, 27);
+            this.EventParamTB.TabIndex = 22;
+            // 
+            // EventTimeTB
+            // 
+            this.EventTimeTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventTimeTB.Location = new System.Drawing.Point(965, 179);
+            this.EventTimeTB.Name = "EventTimeTB";
+            this.EventTimeTB.Size = new System.Drawing.Size(101, 27);
+            this.EventTimeTB.TabIndex = 21;
+            // 
+            // EventValueLabel
+            // 
+            this.EventValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventValueLabel.AutoSize = true;
+            this.EventValueLabel.Location = new System.Drawing.Point(876, 223);
+            this.EventValueLabel.Name = "EventValueLabel";
+            this.EventValueLabel.Size = new System.Drawing.Size(81, 20);
+            this.EventValueLabel.TabIndex = 20;
+            this.EventValueLabel.Text = "New value:";
+            // 
+            // EventTimeLabel
+            // 
+            this.EventTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventTimeLabel.AutoSize = true;
+            this.EventTimeLabel.Location = new System.Drawing.Point(876, 182);
+            this.EventTimeLabel.Name = "EventTimeLabel";
+            this.EventTimeLabel.Size = new System.Drawing.Size(45, 20);
+            this.EventTimeLabel.TabIndex = 19;
+            this.EventTimeLabel.Text = "Time:";
+            // 
+            // EventParamLabel
+            // 
+            this.EventParamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventParamLabel.AutoSize = true;
+            this.EventParamLabel.Location = new System.Drawing.Point(876, 144);
+            this.EventParamLabel.Name = "EventParamLabel";
+            this.EventParamLabel.Size = new System.Drawing.Size(79, 20);
+            this.EventParamLabel.TabIndex = 18;
+            this.EventParamLabel.Text = "Parameter:";
+            // 
+            // TimeTB
+            // 
+            this.TimeTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TimeTB.Location = new System.Drawing.Point(183, 82);
+            this.TimeTB.Name = "TimeTB";
+            this.TimeTB.Size = new System.Drawing.Size(115, 27);
+            this.TimeTB.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-205, -58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 20);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "immunity time:";
+            // 
+            // TimeLabel
+            // 
+            this.TimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TimeLabel.AutoSize = true;
+            this.TimeLabel.Location = new System.Drawing.Point(79, 85);
+            this.TimeLabel.Name = "TimeLabel";
+            this.TimeLabel.Size = new System.Drawing.Size(45, 20);
+            this.TimeLabel.TabIndex = 26;
+            this.TimeLabel.Text = "Time:";
             // 
             // TimmuLabel
             // 
+            this.TimmuLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.TimmuLabel.AutoSize = true;
-            this.TimmuLabel.Location = new System.Drawing.Point(379, 61);
+            this.TimmuLabel.Location = new System.Drawing.Point(681, 51);
             this.TimmuLabel.Name = "TimmuLabel";
             this.TimmuLabel.Size = new System.Drawing.Size(108, 20);
-            this.TimmuLabel.TabIndex = 13;
+            this.TimmuLabel.TabIndex = 27;
             this.TimmuLabel.Text = "immunity time:";
             // 
             // CreateModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 479);
-            this.Controls.Add(this.textBox3);
+            this.ClientSize = new System.Drawing.Size(1082, 503);
             this.Controls.Add(this.TimmuLabel);
+            this.Controls.Add(this.TimeLabel);
+            this.Controls.Add(this.TimeTB);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EventValueTB);
+            this.Controls.Add(this.EventParamTB);
+            this.Controls.Add(this.EventTimeTB);
+            this.Controls.Add(this.EventValueLabel);
+            this.Controls.Add(this.EventTimeLabel);
+            this.Controls.Add(this.EventParamLabel);
+            this.Controls.Add(this.AddEventBtn);
+            this.Controls.Add(this.EventLabel);
+            this.Controls.Add(this.EventView);
+            this.Controls.Add(this.TimmuTB);
             this.Controls.Add(this.RTB);
             this.Controls.Add(this.PopTB);
             this.Controls.Add(this.TinfTB);
@@ -189,6 +363,7 @@ namespace GUI
             this.Controls.Add(this.TinfLabel);
             this.Controls.Add(this.PopulationLabel);
             this.Controls.Add(this.formsPlot1);
+            this.MinimumSize = new System.Drawing.Size(1050, 550);
             this.Name = "CreateModelForm";
             this.Text = "CreateModelForm";
             this.ResumeLayout(false);
@@ -211,7 +386,22 @@ namespace GUI
         private System.Windows.Forms.TextBox TinfTB;
         private System.Windows.Forms.TextBox PopTB;
         private System.Windows.Forms.TextBox RTB;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TimmuTB;
+        private System.Windows.Forms.ListView EventView;
+        private System.Windows.Forms.ColumnHeader Parameter;
+        private System.Windows.Forms.ColumnHeader Time;
+        private System.Windows.Forms.ColumnHeader Value;
+        private System.Windows.Forms.Label EventLabel;
+        private System.Windows.Forms.Button AddEventBtn;
+        private System.Windows.Forms.TextBox EventValueTB;
+        private System.Windows.Forms.TextBox EventParamTB;
+        private System.Windows.Forms.TextBox EventTimeTB;
+        private System.Windows.Forms.Label EventValueLabel;
+        private System.Windows.Forms.Label EventTimeLabel;
+        private System.Windows.Forms.Label EventParamLabel;
+        private System.Windows.Forms.TextBox TimeTB;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.Label TimmuLabel;
     }
 }

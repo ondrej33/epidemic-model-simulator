@@ -1,4 +1,5 @@
 ﻿using GUI.Models;
+using GUI.Exceptions;
 using System;
 using System.IO;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace GUI.FileHandling
         {
             if (!ModelValidator.ValidateMyFormat(fileName))
             {
-                throw new ArgumentException("Incorrectly formatted file.");
+                throw new BadModelFormatException("Incorrectly formatted file: " + fileName);
             }
             return LoadMyFormatAsync(fileName);
         }

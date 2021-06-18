@@ -30,7 +30,7 @@ namespace GUI
         private void InitializeComponent()
         {
             this.PlotWindow = new ScottPlot.FormsPlot();
-            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
+            this.NextButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PlotWindow
@@ -39,32 +39,34 @@ namespace GUI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PlotWindow.BackColor = System.Drawing.Color.Transparent;
-            this.PlotWindow.Location = new System.Drawing.Point(64, 39);
+            this.PlotWindow.Location = new System.Drawing.Point(41, 29);
             this.PlotWindow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PlotWindow.Name = "PlotWindow";
-            this.PlotWindow.Size = new System.Drawing.Size(650, 372);
+            this.PlotWindow.Size = new System.Drawing.Size(673, 393);
             this.PlotWindow.TabIndex = 0;
-            this.PlotWindow.Load += new System.EventHandler(this.Plot_Load);
             // 
-            // hScrollBar1
+            // NextButton
             // 
-            this.hScrollBar1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.hScrollBar1.Location = new System.Drawing.Point(239, 416);
-            this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(301, 26);
-            this.hScrollBar1.TabIndex = 1;
-            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
+            this.NextButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.NextButton.Location = new System.Drawing.Point(324, 430);
+            this.NextButton.MaximumSize = new System.Drawing.Size(100, 40);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(100, 37);
+            this.NextButton.TabIndex = 1;
+            this.NextButton.Text = "Next";
+            this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // PlotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 462);
-            this.Controls.Add(this.hScrollBar1);
+            this.ClientSize = new System.Drawing.Size(754, 479);
+            this.Controls.Add(this.NextButton);
             this.Controls.Add(this.PlotWindow);
+            this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "PlotForm";
             this.Text = "PlotForm";
-            this.Load += new System.EventHandler(this.PlotForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -72,6 +74,6 @@ namespace GUI
         #endregion
 
         private ScottPlot.FormsPlot PlotWindow;
-        private System.Windows.Forms.HScrollBar hScrollBar1;
+        private System.Windows.Forms.Button NextButton;
     }
 }
