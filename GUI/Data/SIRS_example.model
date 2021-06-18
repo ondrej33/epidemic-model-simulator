@@ -11,5 +11,6 @@ I: 1
 R: 0
 -
 Event: 50, R0= 5
-Event: 100, R0= 2.5
-Event: 75, Tinf= 20
+Event: 90, R0= 2.8
+Event: 75, Tinf= 20.5
+Event: 100, Timmu= 120

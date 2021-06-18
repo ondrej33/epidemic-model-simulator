@@ -12,6 +12,7 @@ namespace GUI.FileHandling
         public static bool ValidateMyFormat(string fileName)
         {
             string fileContent = File.ReadAllText(fileName);
+
             // Sir and Sirs are very similar, only differs in type and Timmu (which is missing in Sir)
 
             var patternSIR = new Regex(@"\AModelType:[ ]*SIR[ ]*(\n|\r\n)" +
@@ -39,7 +40,7 @@ namespace GUI.FileHandling
                                         @"I:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"R:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"-[ ]*(\n|\r\n|$)" +
-                                        @"(Event:[ ]*(\d+|\d+\.\d+)+[ ]*,[ ]*(R0|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)[ ]*(?:\n|\r\n|$))*\Z");
+                                        @"(Event:[ ]*(\d+|\d+\.\d+)+[ ]*,[ ]*(R0|Timmu|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)[ ]*(?:\n|\r\n|$))*\Z");
 
             // lets check if we have match
             var oneMatched = patternSIR.Match(fileContent).Success || patternSIRS.Match(fileContent).Success;

@@ -19,12 +19,12 @@ namespace GUI
 {
     public partial class MainForm : Form
     {
-        public List<(List<double[]> coords, string name)> ListGraphs { get; private set; }
+        public List<GraphStruct> ListGraphs { get; private set; }
 
         public MainForm()
         {
             InitializeComponent();
-            ListGraphs = new List<(List<double[]> coords, string name)>();
+            ListGraphs = new List<GraphStruct>();
         }
 
         private async void StartButton_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace GUI
                 await PlotCreator.CreatePictureAsync(plot, graphFileName, graphTitle);
 
                 // and update the progress
-                ListGraphs.Add((resultCurves, graphTitle));
+                ListGraphs.Add(new GraphStruct(resultCurves, graphTitle, model));
                 counter++;
                 ProgressBar.Value = (int)((float)counter / modelPaths.Count() * 100);
             }

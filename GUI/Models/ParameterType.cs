@@ -6,6 +6,7 @@ namespace GUI.Models
     public enum ParameterType
     {
         R0,
-        Tinf
+        Tinf,
+        Timmu
     }
 }

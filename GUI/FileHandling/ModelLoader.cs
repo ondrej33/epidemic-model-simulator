@@ -28,8 +28,6 @@ namespace GUI.FileHandling
         /* Loads the model from a file that was validated before */
         public static BaseModel LoadMyFormat(string fileName)
         {
-            // solve the model ID loading / assigning
-
             // load the content of the file
             string fileContent = File.ReadAllText(fileName);
 
@@ -43,26 +41,11 @@ namespace GUI.FileHandling
             var SRegex = new Regex(@"S:[ ]*(\d+)");
             var IRegex = new Regex(@"I:[ ]*(\d+)");
             var RRegex = new Regex(@"R:[ ]*(\d+)");
-
             var eventRegex = new Regex(@"Event:[ ]*(\d+|\d+\.\d+)[ ]*,[ ]*(R0|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)");
-
-            // find the regex matches
-            var SirsTypeMatch = SirsTypeRegex.Match(fileContent);
-            var NMatch = NRegex.Match(fileContent);
-            var TinfMatch = TinfRegex.Match(fileContent);
-            var R0Match = R0Regex.Match(fileContent);
-            var TimeMatch = TimeRegex.Match(fileContent);
-            var SMatch = SRegex.Match(fileContent);
-            var IMatch = IRegex.Match(fileContent);
-            var RMatch = RRegex.Match(fileContent);
-
-            var eventMatches = eventRegex.Matches(fileContent);
-
-            // now we will put all of that to the new model
-            // we know that all parsing should be fine, because model of the structure of regexes
 
             BaseModel model;
             // if SirsModelType matched, we know we have SIRS, otherwise must be SIR
+            var SirsTypeMatch = SirsTypeRegex.Match(fileContent);
             if (SirsTypeMatch.Success)
             {
                 model = new SirsModel();
@@ -70,27 +53,39 @@ namespace GUI.FileHandling
                 var TimmuRegex = new Regex(@"Timmu:[ ]*(\d+)");
                 var TimmuMatch = TimmuRegex.Match(fileContent);
                 (model as SirsModel).TimeImmune = int.Parse(TimmuMatch.Groups[1].Value);
+                // also lets change event regex, so that Timmu can be changed
+                eventRegex = new Regex(@"Event:[ ]*(\d+|\d+\.\d+)[ ]*,[ ]*(R0|Timmu|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)");
             }
             else
             {
                 model = new SirModel();
             }
 
+            // find the other regex matches
+            var NMatch = NRegex.Match(fileContent);
+            var TinfMatch = TinfRegex.Match(fileContent);
+            var R0Match = R0Regex.Match(fileContent);
+            var TimeMatch = TimeRegex.Match(fileContent);
+            var SMatch = SRegex.Match(fileContent);
+            var IMatch = IRegex.Match(fileContent);
+            var RMatch = RRegex.Match(fileContent);
+            var eventMatches = eventRegex.Matches(fileContent);
+
+            // and put the values to the model
             model.PopulationSize = int.Parse(NMatch.Groups[1].Value);
             model.TimeInfection = int.Parse(TinfMatch.Groups[1].Value);
-            model.R0 = int.Parse(R0Match.Groups[1].Value);
+            model.R0 = double.Parse(R0Match.Groups[1].Value);
             model.TimeToSimulate = int.Parse(TimeMatch.Groups[1].Value);
-
             model.SusceptibleInit = int.Parse(SMatch.Groups[1].Value);
             model.InfectedInit = int.Parse(IMatch.Groups[1].Value);
             model.RemovedInit = int.Parse(RMatch.Groups[1].Value);
 
             foreach (Match match in eventMatches)
             {
-                double time = int.Parse(match.Groups[1].Value);
+                double time = double.Parse(match.Groups[1].Value);
                 ParameterType param;
                 Enum.TryParse(match.Groups[2].Value, out param);
-                double newVal = int.Parse(match.Groups[3].Value);
+                double newVal = double.Parse(match.Groups[3].Value);
 
                 model.Events.Add((param, time, newVal));
             }
