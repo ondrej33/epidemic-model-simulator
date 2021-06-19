@@ -6,7 +6,10 @@ namespace GUI.Simulators
 {
     public class Simulator : ISimulator
     {
-        public BaseModel Model { get; set; }
+        public BaseModel Model { get; private set; }
+
+        public Simulator(BaseModel model)
+            => Model = model;
         
         /* Returns list where first item contains xValues for all points and
          * every other entry contains yValues for each curve. */

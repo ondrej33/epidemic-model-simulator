@@ -81,8 +81,7 @@ namespace GUI
                 }
 
                 // then we do the simulations (computations)
-                var simulator = new Simulator();
-                simulator.Model = model;
+                var simulator = new Simulator(model);
                 var resultCurves = await simulator.SimulateAsync(model.TimeToSimulate, 0.1);
 
                 // and we create the graphs

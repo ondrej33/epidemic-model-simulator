@@ -9,7 +9,6 @@ S: 9999999
 I: 1
 R: 0
 -
-Event: 50, R0= 5
-Event: 90, R0= 2.8
+Event: 90, R0= 4.3
 Event: 75, Tinf= 25
 Event: 100, Timmu= 120
