@@ -24,8 +24,7 @@ namespace GUI
             if (!succ)
             {
                 string message = $"Value \"{paramName}\" can not be parsed to integer.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
             }
             return succ;
         }
@@ -38,8 +37,7 @@ namespace GUI
             if (!succ)
             {
                 string message = $"String \"{paramName}\" can not be parsed to double.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
             }
             return succ;
         }
@@ -52,8 +50,7 @@ namespace GUI
             {
                 succ = false;
                 string message = $"Your given string for \"Parameter\" is not supported.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
             }
             return succ;
         }
@@ -69,8 +66,7 @@ namespace GUI
                 STB.Text == "" || ITB.Text == "" || RTB.Text == "" || TinfTB.Text == "")
             {
                 string message = "Some value was not provided.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
                 return false;
             }
 
@@ -85,8 +81,7 @@ namespace GUI
                 else if (timeImmunity == 0)
                 {
                     string message = "Immunity time can not be 0.";
-                    string caption = "Error";
-                    MessageBox.Show(message, caption);
+                    MessageBox.Show(message, caption: "Error");
                     return false;
                 }
                 else
@@ -114,24 +109,21 @@ namespace GUI
             if (s + i + r != pop)
             {
                 string message = "Inconsistency in numbers (S+I+R != Population size).";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
                 return false;
             }
 
             if (timeInf == 0 || time == 0 || pop == 0)
             {
                 string message = "Any of {TimeInf, Time, Population} must not be 0.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
                 return false;
             }
 
             if (pop < 0 || r0 < 0 || time < 0 || timeInf < 0 || s < 0 || i < 0 || r < 0)
             {
                 string message = "None of the values can be negative.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
                 return false;
             }
 
@@ -154,8 +146,7 @@ namespace GUI
                 if (model.Type == ModelType.SIR && param == ParameterType.Timmu)
                 {
                     string message = "There cant be event with Timmu for SIR model.";
-                    string caption = "Error";
-                    MessageBox.Show(message, caption);
+                    MessageBox.Show(message, caption: "Error");
                     return false;
                 }
                 var newVal = double.Parse(item.SubItems[1].Text.Replace('.', ','));
@@ -223,8 +214,7 @@ namespace GUI
             if (EventParamTB.Text == "" || EventValueTB.Text == "" || EventTimeTB.Text == "")
             {
                 string message = "Some value was not provided.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Error");
                 return;
             }
 
@@ -258,8 +248,8 @@ namespace GUI
             if (EventsList.SelectedItems.Count == 0)
             {
                 string message = "None items were selected.";
-                string caption = "Message";
-                MessageBox.Show(message, caption);
+                MessageBox.Show(message, caption: "Message");
+
             }
 
             foreach (var selectedItem in EventsList.SelectedItems)

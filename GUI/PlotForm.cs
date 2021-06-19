@@ -1,5 +1,4 @@
 ﻿using GUI.Models;
-using GUI.Plotting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +10,9 @@ namespace GUI
     {
         public List<GraphStruct> ListGraphs { get; set; }
 
-        private int index = 0;
+        private int index = 0; // index of the displayed model in the list
 
+        /* Adds some params of the model to the displayed list */
         public void AddParamsToList(BaseModel model)
         {
             ListViewItem itemR0 = new ListViewItem("R0");
@@ -31,6 +31,7 @@ namespace GUI
             }
         }
 
+        /* Adds all events from the model to the displayed list */
         public void AddEventsToList(BaseModel model)
         {
             foreach (var e in model.Events)
@@ -42,6 +43,7 @@ namespace GUI
             }
         }
 
+        /* Initializes form, displays first graph in the list */
         public PlotForm(List<GraphStruct> listGraphs)
         {
             InitializeComponent();
@@ -59,6 +61,7 @@ namespace GUI
             AddEventsToList(model);
         }
 
+        /* Loads next graph in the list instead of the current one */
         private void NextButton_Click(object sender, EventArgs e)
         {
             // clear the previous
@@ -66,7 +69,7 @@ namespace GUI
             ParamsList.Items.Clear();
             EventsList.Items.Clear();
 
-            index = (index + 1) % ListGraphs.Count(); // circular
+            index = (index + 1) % ListGraphs.Count(); // circular queue
             List<double[]> newGraphCoords = ListGraphs[index].Coords;
             string newGraphName = ListGraphs[index].Title;
 

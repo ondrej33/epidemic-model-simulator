@@ -30,29 +30,32 @@ namespace GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.FileBrowser = new GUI.FileBrowser();
+            this.InputFileBrowser = new GUI.FileBrowser();
             this.StartButton = new System.Windows.Forms.Button();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.ProgressLabel = new System.Windows.Forms.Label();
             this.ErrorProviderFormat = new System.Windows.Forms.ErrorProvider(this.components);
-            this.CreateModelBtn = new System.Windows.Forms.Button();
+            this.CreativeModeBtn = new System.Windows.Forms.Button();
             this.InteractiveResultsBtn = new System.Windows.Forms.Button();
+            this.InputLabel = new System.Windows.Forms.Label();
+            this.OutputDirBrowser = new GUI.DirBrowser();
+            this.OutputLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProviderFormat)).BeginInit();
             this.SuspendLayout();
             // 
-            // FileBrowser
+            // InputFileBrowser
             // 
-            this.FileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.InputFileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileBrowser.Location = new System.Drawing.Point(77, 106);
-            this.FileBrowser.Name = "FileBrowser";
-            this.FileBrowser.Size = new System.Drawing.Size(791, 43);
-            this.FileBrowser.TabIndex = 0;
+            this.InputFileBrowser.Location = new System.Drawing.Point(77, 106);
+            this.InputFileBrowser.Name = "InputFileBrowser";
+            this.InputFileBrowser.Size = new System.Drawing.Size(732, 43);
+            this.InputFileBrowser.TabIndex = 0;
             // 
             // StartButton
             // 
             this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StartButton.Location = new System.Drawing.Point(713, 197);
+            this.StartButton.Location = new System.Drawing.Point(674, 260);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(144, 43);
             this.StartButton.TabIndex = 1;
@@ -64,15 +67,15 @@ namespace GUI
             // 
             this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBar.Location = new System.Drawing.Point(270, 205);
+            this.ProgressBar.Location = new System.Drawing.Point(290, 268);
             this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Size = new System.Drawing.Size(397, 24);
+            this.ProgressBar.Size = new System.Drawing.Size(338, 24);
             this.ProgressBar.TabIndex = 2;
             // 
             // ProgressLabel
             // 
             this.ProgressLabel.AutoSize = true;
-            this.ProgressLabel.Location = new System.Drawing.Point(162, 208);
+            this.ProgressLabel.Location = new System.Drawing.Point(182, 271);
             this.ProgressLabel.Name = "ProgressLabel";
             this.ProgressLabel.Size = new System.Drawing.Size(68, 20);
             this.ProgressLabel.TabIndex = 3;
@@ -82,22 +85,23 @@ namespace GUI
             // 
             this.ErrorProviderFormat.ContainerControl = this;
             // 
-            // CreateModelBtn
+            // CreativeModeBtn
             // 
-            this.CreateModelBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CreateModelBtn.Location = new System.Drawing.Point(401, 39);
-            this.CreateModelBtn.Name = "CreateModelBtn";
-            this.CreateModelBtn.Size = new System.Drawing.Size(143, 45);
-            this.CreateModelBtn.TabIndex = 5;
-            this.CreateModelBtn.Text = "Creative mode";
-            this.CreateModelBtn.UseVisualStyleBackColor = true;
-            this.CreateModelBtn.Click += new System.EventHandler(this.CreateModelBtn_Click);
+            this.CreativeModeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CreativeModeBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CreativeModeBtn.Location = new System.Drawing.Point(372, 39);
+            this.CreativeModeBtn.Name = "CreativeModeBtn";
+            this.CreativeModeBtn.Size = new System.Drawing.Size(143, 45);
+            this.CreativeModeBtn.TabIndex = 5;
+            this.CreativeModeBtn.Text = "Creative mode";
+            this.CreativeModeBtn.UseVisualStyleBackColor = true;
+            this.CreativeModeBtn.Click += new System.EventHandler(this.CreativeModeBtn_Click);
             // 
             // InteractiveResultsBtn
             // 
-            this.InteractiveResultsBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.InteractiveResultsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InteractiveResultsBtn.Enabled = false;
-            this.InteractiveResultsBtn.Location = new System.Drawing.Point(714, 256);
+            this.InteractiveResultsBtn.Location = new System.Drawing.Point(675, 319);
             this.InteractiveResultsBtn.Name = "InteractiveResultsBtn";
             this.InteractiveResultsBtn.Size = new System.Drawing.Size(143, 45);
             this.InteractiveResultsBtn.TabIndex = 6;
@@ -105,19 +109,49 @@ namespace GUI
             this.InteractiveResultsBtn.UseVisualStyleBackColor = true;
             this.InteractiveResultsBtn.Click += new System.EventHandler(this.InteractiveResultsBtn_Click);
             // 
+            // InputLabel
+            // 
+            this.InputLabel.AutoSize = true;
+            this.InputLabel.Location = new System.Drawing.Point(37, 117);
+            this.InputLabel.Name = "InputLabel";
+            this.InputLabel.Size = new System.Drawing.Size(71, 20);
+            this.InputLabel.TabIndex = 8;
+            this.InputLabel.Text = "Input file:";
+            // 
+            // OutputDirBrowser
+            // 
+            this.OutputDirBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutputDirBrowser.Location = new System.Drawing.Point(104, 169);
+            this.OutputDirBrowser.Name = "OutputDirBrowser";
+            this.OutputDirBrowser.Size = new System.Drawing.Size(724, 59);
+            this.OutputDirBrowser.TabIndex = 10;
+            // 
+            // OutputLabel
+            // 
+            this.OutputLabel.AutoSize = true;
+            this.OutputLabel.Location = new System.Drawing.Point(37, 181);
+            this.OutputLabel.Name = "OutputLabel";
+            this.OutputLabel.Size = new System.Drawing.Size(80, 20);
+            this.OutputLabel.TabIndex = 11;
+            this.OutputLabel.Text = "Output dir:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 342);
+            this.ClientSize = new System.Drawing.Size(886, 383);
+            this.Controls.Add(this.OutputLabel);
+            this.Controls.Add(this.OutputDirBrowser);
+            this.Controls.Add(this.InputLabel);
             this.Controls.Add(this.InteractiveResultsBtn);
-            this.Controls.Add(this.CreateModelBtn);
+            this.Controls.Add(this.CreativeModeBtn);
             this.Controls.Add(this.ProgressLabel);
             this.Controls.Add(this.ProgressBar);
             this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.FileBrowser);
+            this.Controls.Add(this.InputFileBrowser);
             this.MaximumSize = new System.Drawing.Size(1100, 450);
-            this.MinimumSize = new System.Drawing.Size(700, 300);
+            this.MinimumSize = new System.Drawing.Size(750, 430);
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProviderFormat)).EndInit();
@@ -128,13 +162,16 @@ namespace GUI
 
         #endregion
 
-        private FileBrowser FileBrowser;
+        private FileBrowser InputFileBrowser;
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.ProgressBar ProgressBar;
         private System.Windows.Forms.Label ProgressLabel;
         private System.Windows.Forms.ErrorProvider ErrorProviderFormat;
-        private System.Windows.Forms.Button CreateModelBtn;
+        private System.Windows.Forms.Button CreativeModeBtn;
         private System.Windows.Forms.Button InteractiveResultsBtn;
+        private System.Windows.Forms.Label InputLabel;
+        private System.Windows.Forms.Label OutputLabel;
+        private DirBrowser OutputDirBrowser;
     }
 }
 

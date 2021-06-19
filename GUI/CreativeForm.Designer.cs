@@ -104,7 +104,7 @@ namespace GUI
             this.R0Label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.R0Label.AutoSize = true;
-            this.R0Label.Location = new System.Drawing.Point(52, 46);
+            this.R0Label.Location = new System.Drawing.Point(52, 43);
             this.R0Label.Name = "R0Label";
             this.R0Label.Size = new System.Drawing.Size(29, 20);
             this.R0Label.TabIndex = 3;
@@ -147,7 +147,7 @@ namespace GUI
             // 
             this.ITB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ITB.Location = new System.Drawing.Point(470, 66);
+            this.ITB.Location = new System.Drawing.Point(479, 66);
             this.ITB.Name = "ITB";
             this.ITB.Size = new System.Drawing.Size(119, 27);
             this.ITB.TabIndex = 7;
@@ -156,7 +156,7 @@ namespace GUI
             // 
             this.STB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.STB.Location = new System.Drawing.Point(470, 40);
+            this.STB.Location = new System.Drawing.Point(479, 40);
             this.STB.Name = "STB";
             this.STB.Size = new System.Drawing.Size(119, 27);
             this.STB.TabIndex = 8;
@@ -183,7 +183,7 @@ namespace GUI
             // 
             this.PopTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.PopTB.Location = new System.Drawing.Point(470, 14);
+            this.PopTB.Location = new System.Drawing.Point(479, 14);
             this.PopTB.Name = "PopTB";
             this.PopTB.Size = new System.Drawing.Size(119, 27);
             this.PopTB.TabIndex = 11;
@@ -192,7 +192,7 @@ namespace GUI
             // 
             this.RTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.RTB.Location = new System.Drawing.Point(470, 92);
+            this.RTB.Location = new System.Drawing.Point(479, 92);
             this.RTB.Name = "RTB";
             this.RTB.Size = new System.Drawing.Size(119, 27);
             this.RTB.TabIndex = 12;
@@ -262,7 +262,7 @@ namespace GUI
             // EventValueTB
             // 
             this.EventValueTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventValueTB.Location = new System.Drawing.Point(896, 69);
+            this.EventValueTB.Location = new System.Drawing.Point(896, 43);
             this.EventValueTB.Name = "EventValueTB";
             this.EventValueTB.Size = new System.Drawing.Size(114, 27);
             this.EventValueTB.TabIndex = 23;
@@ -278,7 +278,7 @@ namespace GUI
             // EventTimeTB
             // 
             this.EventTimeTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventTimeTB.Location = new System.Drawing.Point(896, 43);
+            this.EventTimeTB.Location = new System.Drawing.Point(896, 69);
             this.EventTimeTB.Name = "EventTimeTB";
             this.EventTimeTB.Size = new System.Drawing.Size(114, 27);
             this.EventTimeTB.TabIndex = 21;
@@ -287,7 +287,7 @@ namespace GUI
             // 
             this.EventValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventValueLabel.AutoSize = true;
-            this.EventValueLabel.Location = new System.Drawing.Point(796, 72);
+            this.EventValueLabel.Location = new System.Drawing.Point(798, 46);
             this.EventValueLabel.Name = "EventValueLabel";
             this.EventValueLabel.Size = new System.Drawing.Size(81, 20);
             this.EventValueLabel.TabIndex = 20;
@@ -297,7 +297,7 @@ namespace GUI
             // 
             this.EventTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventTimeLabel.AutoSize = true;
-            this.EventTimeLabel.Location = new System.Drawing.Point(796, 42);
+            this.EventTimeLabel.Location = new System.Drawing.Point(798, 72);
             this.EventTimeLabel.Name = "EventTimeLabel";
             this.EventTimeLabel.Size = new System.Drawing.Size(45, 20);
             this.EventTimeLabel.TabIndex = 19;
@@ -307,7 +307,7 @@ namespace GUI
             // 
             this.EventParamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventParamLabel.AutoSize = true;
-            this.EventParamLabel.Location = new System.Drawing.Point(796, 16);
+            this.EventParamLabel.Location = new System.Drawing.Point(796, 20);
             this.EventParamLabel.Name = "EventParamLabel";
             this.EventParamLabel.Size = new System.Drawing.Size(79, 20);
             this.EventParamLabel.TabIndex = 18;
@@ -401,7 +401,7 @@ namespace GUI
             this.RemoveEventBtn.UseVisualStyleBackColor = true;
             this.RemoveEventBtn.Click += new System.EventHandler(this.RemoveEventBtn_Click);
             // 
-            // CreateModelForm
+            // CreativeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -438,7 +438,7 @@ namespace GUI
             this.Controls.Add(this.PopulationLabel);
             this.Controls.Add(this.PlotWindow);
             this.MinimumSize = new System.Drawing.Size(1050, 550);
-            this.Name = "CreateModelForm";
+            this.Name = "CreativeForm";
             this.Text = "CreateModelForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -463,8 +463,6 @@ namespace GUI
         private System.Windows.Forms.TextBox TimmuTB;
         private System.Windows.Forms.ListView EventsList;
         private System.Windows.Forms.ColumnHeader Parameter;
-        private System.Windows.Forms.ColumnHeader Tsime;
-        private System.Windows.Forms.ColumnHeader ValuTimee;
         private System.Windows.Forms.Label EventLabel;
         private System.Windows.Forms.Button AddEventBtn;
         private System.Windows.Forms.TextBox EventValueTB;

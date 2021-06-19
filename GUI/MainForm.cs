@@ -21,6 +21,13 @@ namespace GUI
             ListGraphs = new List<GraphStruct>();
         }
 
+        /* Displays the MessageBox with error */
+        private void DisplayErrorMessage(string message)
+        {
+            string caption = "Error";
+            MessageBox.Show(message, caption);
+        }
+
         private async void StartButton_Click(object sender, EventArgs e)
         {
             // first lets set all things to defaults (so that they restart each time we click this btn)
@@ -30,12 +37,15 @@ namespace GUI
             InteractiveResultsBtn.Enabled = false;
             ListGraphs.Clear();
 
-            if (!File.Exists(FileBrowser.Path))
+            if (!File.Exists(InputFileBrowser.Path))
             {
-                // Displays the MessageBox with error
-                string message = "Input path is invalid.";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                DisplayErrorMessage("Input path is invalid.");
+                StartButton.Enabled = true;
+                return;
+            }
+            if (!Directory.Exists(OutputDirBrowser.DirPath))
+            {
+                DisplayErrorMessage("Output path is invalid.");
                 StartButton.Enabled = true;
                 return;
             }
@@ -43,23 +53,21 @@ namespace GUI
             List<string> modelPaths;
             try
             {
-                modelPaths = InputListParser.GetFilePaths(FileBrowser.Path);
+                modelPaths = InputListParser.GetFilePaths(InputFileBrowser.Path);
                 // TODO - print a number of paths received
             }
             catch (BadPathException exc)
             {
-                // Displays the MessageBox with error
-                string message = $"One of the paths is invalid: {exc.Message}";
-                string caption = "Error";
-                MessageBox.Show(message, caption);
+                // Display the MessageBox with error
+                DisplayErrorMessage($"The path in input file is invalid: {exc.Message}");
                 StartButton.Enabled = true;
                 return;
             }
 
             if (modelPaths.Count() == 0)
             {
-                ErrorProviderFormat.SetError(FileBrowser, "no path was found in input");
-                ProgressBar.Value = 100;
+                string message = "No valid path was found in the input file.";
+                MessageBox.Show(message, caption: "Message");
                 StartButton.Enabled = true;
                 return;
             }
@@ -73,7 +81,6 @@ namespace GUI
                 BaseModel model;
                 try
                 {
-                    // TODO maybe - more input file types
                     model = await ModelLoader.LoadModel(path);
                     model.ID = id;
                     id++;
@@ -81,7 +88,7 @@ namespace GUI
                 // TODO - check if other exceptions arent possible 
                 catch (BadModelFormatException exc)
                 {
-                    ErrorProviderFormat.SetError(FileBrowser, exc.Message); // just minor error
+                    ErrorProviderFormat.SetError(InputFileBrowser, exc.Message); // just minor error
                     counter++;
                     continue;
                 }
@@ -95,7 +102,7 @@ namespace GUI
                 PlotCreator.PrepareGraphSIR(plot, resultCurves);
 
                 string graphTitle = model.Type.ToString() + $" (id={model.ID})";
-                string graphFileName = Constants.DataFolderPath + $"picture{model.Type}{model.ID}.png";
+                string graphFileName = OutputDirBrowser.DirPath + $"picture{model.ID}_{model.Type}.png";
                 await PlotCreator.CreatePictureAsync(plot, graphFileName, graphTitle);
 
                 // and update the progress
@@ -106,13 +113,14 @@ namespace GUI
 
             // after the procedure is finished, lets enable button again
             StartButton.Enabled = true;
-            if (ListGraphs.Count() > 0) // lets also enable special result view, if we have something to show
+            if (ListGraphs.Count() > 0) // new we can also enable in-app results view
             {
                 InteractiveResultsBtn.Enabled = true;
             }
         }
 
-        private void CreateModelBtn_Click(object sender, EventArgs e)
+        /* Opens the new creative mode, after closing it app terminates. */
+        private void CreativeModeBtn_Click(object sender, EventArgs e)
         {
             var frm = new CreativeForm();
             frm.Location = Location;
@@ -122,6 +130,8 @@ namespace GUI
             Hide();
         }
 
+        /* Opens the result-check mode, after closing it we get back and can
+         * run another simulations. */
         private void InteractiveResultsBtn_Click(object sender, EventArgs e)
         {
             var frm = new PlotForm(ListGraphs);

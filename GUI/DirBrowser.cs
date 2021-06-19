@@ -3,9 +3,13 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class FileBrowser : UserControl
+    public partial class DirBrowser : UserControl
     {
-        public string Path
+        public DirBrowser()
+        {
+            InitializeComponent();
+        }
+        public string DirPath
         {
             get => textBoxPath.Text;
             private set
@@ -13,19 +17,15 @@ namespace GUI
                 textBoxPath.Text = value;
             }
         }
-        public FileBrowser()
-        {
-            InitializeComponent();
-        }
 
         private void browseBtn_Click(object sender, EventArgs e)
         {
-            var dialog = new OpenFileDialog();
+            var dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog(ParentForm) != DialogResult.OK)
             {
                 return;
             }
-            Path = dialog.FileName;
+            DirPath = dialog.SelectedPath;
         }
     }
 }
