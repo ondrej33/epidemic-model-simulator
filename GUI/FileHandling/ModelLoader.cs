@@ -35,13 +35,13 @@ namespace GUI.FileHandling
             var SirsTypeRegex = new Regex(@"ModelType:[ ]*SIRS");
             var NRegex = new Regex(@"N:[ ]*(\d+)");
             var TinfRegex = new Regex(@"Tinf:[ ]*(\d+)");
-            var R0Regex = new Regex(@"R0:[ ]*(\d+|\d+\.\d+)");
+            var R0Regex = new Regex(@"R0:[ ]*(\d+(\.\d+)?)");
             var TimeRegex = new Regex(@"Time:[ ]*(\d+)");
 
             var SRegex = new Regex(@"S:[ ]*(\d+)");
             var IRegex = new Regex(@"I:[ ]*(\d+)");
             var RRegex = new Regex(@"R:[ ]*(\d+)");
-            var eventRegex = new Regex(@"Event:[ ]*(\d+|\d+\.\d+)[ ]*,[ ]*(R0|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)");
+            var eventRegex = new Regex(@"Event:[ ]*(\d+)[ ]*,[ ]*(R0|Tinf)[ ]*=[ ]*(\d+(\.\d+)?)");
 
             BaseModel model;
             // if SirsModelType matched, we know we have SIRS, otherwise must be SIR
@@ -53,8 +53,12 @@ namespace GUI.FileHandling
                 var TimmuRegex = new Regex(@"Timmu:[ ]*(\d+)");
                 var TimmuMatch = TimmuRegex.Match(fileContent);
                 (model as SirsModel).TimeImmune = int.Parse(TimmuMatch.Groups[1].Value);
+                if ((model as SirsModel).TimeImmune == 0)
+                {
+                    throw new BadModelFormatException("Timmu can not be 0 in: " + fileName);
+                }
                 // also lets change event regex, so that Timmu can be changed
-                eventRegex = new Regex(@"Event:[ ]*(\d+|\d+\.\d+)[ ]*,[ ]*(R0|Timmu|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)");
+                eventRegex = new Regex(@"Event:[ ]*(\d+)[ ]*,[ ]*(R0|Timmu|Tinf)[ ]*=[ ]*(\d+(\.\d+)?)");
             }
             else
             {
@@ -74,18 +78,27 @@ namespace GUI.FileHandling
             // and put the values to the model
             model.PopulationSize = int.Parse(NMatch.Groups[1].Value);
             model.TimeInfection = int.Parse(TinfMatch.Groups[1].Value);
-            model.R0 = double.Parse(R0Match.Groups[1].Value);
+            model.R0 = double.Parse(R0Match.Groups[1].Value.Replace('.', ','));
             model.TimeToSimulate = int.Parse(TimeMatch.Groups[1].Value);
             model.SusceptibleInit = int.Parse(SMatch.Groups[1].Value);
             model.InfectedInit = int.Parse(IMatch.Groups[1].Value);
             model.RemovedInit = int.Parse(RMatch.Groups[1].Value);
 
+            if (model.PopulationSize != model.SusceptibleInit + model.InfectedInit + model.RemovedInit)
+            {
+                throw new BadModelFormatException("Inconsistent model (S+I+R != N) in: " + fileName);
+            }
+            if (model.TimeInfection == 0 || model.PopulationSize == 0 || model.TimeToSimulate == 0)
+            {
+                throw new BadModelFormatException("Any of {TimeInf, Time, Population} must not be 0 in: " + fileName);
+            }
+
             foreach (Match match in eventMatches)
             {
-                double time = double.Parse(match.Groups[1].Value);
+                int time = int.Parse(match.Groups[1].Value);
                 ParameterType param;
                 Enum.TryParse(match.Groups[2].Value, out param);
-                double newVal = double.Parse(match.Groups[3].Value);
+                double newVal = double.Parse(match.Groups[3].Value.Replace('.', ','));
 
                 model.Events.Add((param, time, newVal));
             }

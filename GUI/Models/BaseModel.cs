@@ -25,13 +25,13 @@ namespace GUI.Models
 
         // dictionary describing events, tuple of : parameter to change, in what time, to which value 
         [JsonIgnore]
-        public List<(ParameterType param, double time, double newVal)> Events { get; set; }
+        public List<(ParameterType param, int time, double newVal)> Events { get; set; }
 
         // this will tell us how long simulation will be
         public int TimeToSimulate { get; set; }
 
         public BaseModel()
-            => Events = new List<(ParameterType param, double time, double newVal)>();
+            => Events = new List<(ParameterType param, int time, double newVal)>();
 
     }
 }

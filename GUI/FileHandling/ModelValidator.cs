@@ -19,28 +19,26 @@ namespace GUI.FileHandling
                                        @"-[ ]*(\n|\r\n)" +
                                        @"N:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                        @"Tinf:[ ]*(\d)+[ ]*(\n|\r\n)" +
-                                       @"R0:[ ]*(\d+|\d+\.\d+)[ ]*(\n|\r\n)" +
+                                       @"R0:[ ]*(\d+(\.\d+)?)[ ]*(\n|\r\n)" +
                                        @"Time:[ ]*(\d)+[ ]*(\n|\r\n)" +
-                                       @"-[ ]*(\n|\r\n)" +
                                        @"S:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                        @"I:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                        @"R:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                        @"-[ ]*(\n|\r\n|$)" +
-                                       @"(Event:[ ]*(\d+|\d+\.\d+)+[ ]*,[ ]*(R0|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)[ ]*(?:\n|\r\n|$))*\Z");
+                                       @"(Event:[ ]*(\d+)+[ ]*,[ ]*(R0[ ]*=[ ]*(\d+(\.\d+)?)|(Tinf)[ ]*=[ ]*(\d+))[ ]*(?:\n|\r\n|$))*\Z");
 
             var patternSIRS = new Regex(@"\AModelType:[ ]*SIRS[ ]*(\n|\r\n)" +
                                         @"-[ ]*(\n|\r\n)" +
                                         @"N:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"Tinf:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"Timmu:[ ]*(\d)+[ ]*(\n|\r\n)" +
-                                        @"R0:[ ]*(\d+|\d+\.\d+)[ ]*(\n|\r\n)" +
+                                        @"R0:[ ]*(\d+(\.\d+)?)[ ]*(\n|\r\n)" +
                                         @"Time:[ ]*(\d)+[ ]*(\n|\r\n)" +
-                                        @"-[ ]*(\n|\r\n)" +
                                         @"S:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"I:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"R:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"-[ ]*(\n|\r\n|$)" +
-                                        @"(Event:[ ]*(\d+|\d+\.\d+)+[ ]*,[ ]*(R0|Timmu|Tinf)[ ]*=[ ]*(\d+|\d+\.\d+)[ ]*(?:\n|\r\n|$))*\Z");
+                                        @"(Event:[ ]*(\d+)+[ ]*,[ ]*(R0[ ]*=[ ]*(\d+(\.\d+)?)|(Timmu|Tinf)[ ]*=[ ]*(\d+))[ ]*(?:\n|\r\n|$))*\Z");
 
             // lets check if we have match
             var oneMatched = patternSIR.Match(fileContent).Success || patternSIRS.Match(fileContent).Success;

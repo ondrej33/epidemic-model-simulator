@@ -43,10 +43,10 @@ namespace GUI
             this.PopTB = new System.Windows.Forms.TextBox();
             this.RTB = new System.Windows.Forms.TextBox();
             this.TimmuTB = new System.Windows.Forms.TextBox();
-            this.EventView = new System.Windows.Forms.ListView();
+            this.EventsList = new System.Windows.Forms.ListView();
             this.Parameter = new System.Windows.Forms.ColumnHeader();
-            this.Time = new System.Windows.Forms.ColumnHeader();
             this.Value = new System.Windows.Forms.ColumnHeader();
+            this.Time = new System.Windows.Forms.ColumnHeader();
             this.EventLabel = new System.Windows.Forms.Label();
             this.AddEventBtn = new System.Windows.Forms.Button();
             this.EventValueTB = new System.Windows.Forms.TextBox();
@@ -59,6 +59,8 @@ namespace GUI
             this.label1 = new System.Windows.Forms.Label();
             this.TimeLabel = new System.Windows.Forms.Label();
             this.TimmuLabel = new System.Windows.Forms.Label();
+            this.SimulateButton = new System.Windows.Forms.Button();
+            this.InfoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // formsPlot1
@@ -70,7 +72,7 @@ namespace GUI
             this.formsPlot1.Location = new System.Drawing.Point(21, 114);
             this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(731, 398);
+            this.formsPlot1.Size = new System.Drawing.Size(681, 397);
             this.formsPlot1.TabIndex = 0;
             // 
             // PopulationLabel
@@ -80,9 +82,9 @@ namespace GUI
             this.PopulationLabel.AutoSize = true;
             this.PopulationLabel.Location = new System.Drawing.Point(79, 11);
             this.PopulationLabel.Name = "PopulationLabel";
-            this.PopulationLabel.Size = new System.Drawing.Size(85, 20);
+            this.PopulationLabel.Size = new System.Drawing.Size(83, 20);
             this.PopulationLabel.TabIndex = 1;
-            this.PopulationLabel.Text = "population:";
+            this.PopulationLabel.Text = "Population:";
             // 
             // TinfLabel
             // 
@@ -93,7 +95,7 @@ namespace GUI
             this.TinfLabel.Name = "TinfLabel";
             this.TinfLabel.Size = new System.Drawing.Size(112, 20);
             this.TinfLabel.TabIndex = 2;
-            this.TinfLabel.Text = "inefection time:";
+            this.TinfLabel.Text = "Inefection time:";
             // 
             // R0Label
             // 
@@ -202,26 +204,43 @@ namespace GUI
             this.TimmuTB.Size = new System.Drawing.Size(115, 27);
             this.TimmuTB.TabIndex = 14;
             // 
-            // EventView
+            // EventsList
             // 
-            this.EventView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.EventsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Parameter,
-            this.Time,
-            this.Value});
-            this.EventView.HideSelection = false;
-            this.EventView.Location = new System.Drawing.Point(762, 297);
-            this.EventView.Name = "EventView";
-            this.EventView.Size = new System.Drawing.Size(305, 182);
-            this.EventView.TabIndex = 15;
-            this.EventView.UseCompatibleStateImageBehavior = false;
+            this.Value,
+            this.Time});
+            this.EventsList.GridLines = true;
+            this.EventsList.HideSelection = false;
+            this.EventsList.Location = new System.Drawing.Point(714, 289);
+            this.EventsList.Name = "EventsList";
+            this.EventsList.Size = new System.Drawing.Size(306, 150);
+            this.EventsList.TabIndex = 15;
+            this.EventsList.UseCompatibleStateImageBehavior = false;
+            this.EventsList.View = System.Windows.Forms.View.Details;
+            // 
+            // Parameter
+            // 
+            this.Parameter.Text = "Parameter";
+            this.Parameter.Width = 101;
+            // 
+            // Value
+            // 
+            this.Value.Text = "Value";
+            this.Value.Width = 101;
+            // 
+            // Time
+            // 
+            this.Time.Text = "Time";
+            this.Time.Width = 101;
             // 
             // EventLabel
             // 
             this.EventLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EventLabel.AutoSize = true;
             this.EventLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.EventLabel.Location = new System.Drawing.Point(762, 136);
+            this.EventLabel.Location = new System.Drawing.Point(709, 129);
             this.EventLabel.Name = "EventLabel";
             this.EventLabel.Size = new System.Drawing.Size(72, 28);
             this.EventLabel.TabIndex = 16;
@@ -230,42 +249,43 @@ namespace GUI
             // AddEventBtn
             // 
             this.AddEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddEventBtn.Location = new System.Drawing.Point(971, 262);
+            this.AddEventBtn.Location = new System.Drawing.Point(923, 246);
             this.AddEventBtn.Name = "AddEventBtn";
             this.AddEventBtn.Size = new System.Drawing.Size(96, 30);
             this.AddEventBtn.TabIndex = 17;
             this.AddEventBtn.Text = "Add event";
             this.AddEventBtn.UseVisualStyleBackColor = true;
+            this.AddEventBtn.Click += new System.EventHandler(this.AddEventBtn_Click);
             // 
             // EventValueTB
             // 
             this.EventValueTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventValueTB.Location = new System.Drawing.Point(965, 216);
+            this.EventValueTB.Location = new System.Drawing.Point(905, 208);
             this.EventValueTB.Name = "EventValueTB";
-            this.EventValueTB.Size = new System.Drawing.Size(101, 27);
+            this.EventValueTB.Size = new System.Drawing.Size(114, 27);
             this.EventValueTB.TabIndex = 23;
             // 
             // EventParamTB
             // 
             this.EventParamTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventParamTB.Location = new System.Drawing.Point(965, 141);
+            this.EventParamTB.Location = new System.Drawing.Point(905, 133);
             this.EventParamTB.Name = "EventParamTB";
-            this.EventParamTB.Size = new System.Drawing.Size(101, 27);
+            this.EventParamTB.Size = new System.Drawing.Size(114, 27);
             this.EventParamTB.TabIndex = 22;
             // 
             // EventTimeTB
             // 
             this.EventTimeTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EventTimeTB.Location = new System.Drawing.Point(965, 179);
+            this.EventTimeTB.Location = new System.Drawing.Point(905, 171);
             this.EventTimeTB.Name = "EventTimeTB";
-            this.EventTimeTB.Size = new System.Drawing.Size(101, 27);
+            this.EventTimeTB.Size = new System.Drawing.Size(114, 27);
             this.EventTimeTB.TabIndex = 21;
             // 
             // EventValueLabel
             // 
             this.EventValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EventValueLabel.AutoSize = true;
-            this.EventValueLabel.Location = new System.Drawing.Point(876, 223);
+            this.EventValueLabel.Location = new System.Drawing.Point(805, 211);
             this.EventValueLabel.Name = "EventValueLabel";
             this.EventValueLabel.Size = new System.Drawing.Size(81, 20);
             this.EventValueLabel.TabIndex = 20;
@@ -275,7 +295,7 @@ namespace GUI
             // 
             this.EventTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EventTimeLabel.AutoSize = true;
-            this.EventTimeLabel.Location = new System.Drawing.Point(876, 182);
+            this.EventTimeLabel.Location = new System.Drawing.Point(805, 170);
             this.EventTimeLabel.Name = "EventTimeLabel";
             this.EventTimeLabel.Size = new System.Drawing.Size(45, 20);
             this.EventTimeLabel.TabIndex = 19;
@@ -285,7 +305,7 @@ namespace GUI
             // 
             this.EventParamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EventParamLabel.AutoSize = true;
-            this.EventParamLabel.Location = new System.Drawing.Point(876, 144);
+            this.EventParamLabel.Location = new System.Drawing.Point(805, 132);
             this.EventParamLabel.Name = "EventParamLabel";
             this.EventParamLabel.Size = new System.Drawing.Size(79, 20);
             this.EventParamLabel.TabIndex = 18;
@@ -316,9 +336,9 @@ namespace GUI
             this.TimeLabel.AutoSize = true;
             this.TimeLabel.Location = new System.Drawing.Point(79, 85);
             this.TimeLabel.Name = "TimeLabel";
-            this.TimeLabel.Size = new System.Drawing.Size(45, 20);
+            this.TimeLabel.Size = new System.Drawing.Size(93, 20);
             this.TimeLabel.TabIndex = 26;
-            this.TimeLabel.Text = "Time:";
+            this.TimeLabel.Text = "Time period:";
             // 
             // TimmuLabel
             // 
@@ -329,13 +349,38 @@ namespace GUI
             this.TimmuLabel.Name = "TimmuLabel";
             this.TimmuLabel.Size = new System.Drawing.Size(108, 20);
             this.TimmuLabel.TabIndex = 27;
-            this.TimmuLabel.Text = "immunity time:";
+            this.TimmuLabel.Text = "Immunity time:";
+            // 
+            // SimulateButton
+            // 
+            this.SimulateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SimulateButton.Location = new System.Drawing.Point(806, 455);
+            this.SimulateButton.Name = "SimulateButton";
+            this.SimulateButton.Size = new System.Drawing.Size(127, 36);
+            this.SimulateButton.TabIndex = 28;
+            this.SimulateButton.Text = "Start simulation";
+            this.SimulateButton.UseVisualStyleBackColor = true;
+            this.SimulateButton.Click += new System.EventHandler(this.SimulateButton_Click);
+            // 
+            // InfoLabel
+            // 
+            this.InfoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.InfoLabel.AutoSize = true;
+            this.InfoLabel.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.InfoLabel.Location = new System.Drawing.Point(818, 78);
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(129, 19);
+            this.InfoLabel.TabIndex = 29;
+            this.InfoLabel.Text = "*put -1 here for SIR";
             // 
             // CreateModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 503);
+            this.ClientSize = new System.Drawing.Size(1032, 503);
+            this.Controls.Add(this.InfoLabel);
+            this.Controls.Add(this.SimulateButton);
             this.Controls.Add(this.TimmuLabel);
             this.Controls.Add(this.TimeLabel);
             this.Controls.Add(this.TimeTB);
@@ -348,7 +393,7 @@ namespace GUI
             this.Controls.Add(this.EventParamLabel);
             this.Controls.Add(this.AddEventBtn);
             this.Controls.Add(this.EventLabel);
-            this.Controls.Add(this.EventView);
+            this.Controls.Add(this.EventsList);
             this.Controls.Add(this.TimmuTB);
             this.Controls.Add(this.RTB);
             this.Controls.Add(this.PopTB);
@@ -387,10 +432,10 @@ namespace GUI
         private System.Windows.Forms.TextBox PopTB;
         private System.Windows.Forms.TextBox RTB;
         private System.Windows.Forms.TextBox TimmuTB;
-        private System.Windows.Forms.ListView EventView;
+        private System.Windows.Forms.ListView EventsList;
         private System.Windows.Forms.ColumnHeader Parameter;
-        private System.Windows.Forms.ColumnHeader Time;
-        private System.Windows.Forms.ColumnHeader Value;
+        private System.Windows.Forms.ColumnHeader Tsime;
+        private System.Windows.Forms.ColumnHeader ValuTimee;
         private System.Windows.Forms.Label EventLabel;
         private System.Windows.Forms.Button AddEventBtn;
         private System.Windows.Forms.TextBox EventValueTB;
@@ -403,5 +448,9 @@ namespace GUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.Label TimmuLabel;
+        private System.Windows.Forms.Button SimulateButton;
+        private System.Windows.Forms.ColumnHeader Time;
+        private System.Windows.Forms.ColumnHeader Value;
+        private System.Windows.Forms.Label InfoLabel;
     }
 }
