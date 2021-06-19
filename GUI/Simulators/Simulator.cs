@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GUI.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using GUI.Models;
 
 namespace GUI.Simulators
 {

@@ -56,12 +56,11 @@ namespace GUI
             // 
             // NextButton
             // 
-            this.NextButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextButton.Location = new System.Drawing.Point(366, 454);
+            this.NextButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.NextButton.Location = new System.Drawing.Point(339, 451);
             this.NextButton.MaximumSize = new System.Drawing.Size(100, 40);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(100, 37);
+            this.NextButton.Size = new System.Drawing.Size(100, 40);
             this.NextButton.TabIndex = 1;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;

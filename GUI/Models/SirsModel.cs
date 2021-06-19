@@ -1,6 +1,7 @@
 ﻿
 namespace GUI.Models
 {
+    /* Similar to SIR, but immunity vanishes over time */
     public class SirsModel : SirModel
     {
         public int TimeImmune { get; set; }

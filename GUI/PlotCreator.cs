@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 
-namespace GUI.Plotting
+namespace GUI
 {
-    /* Creates the file for picture and some basics of graph like axes.
-     * Also has static versions of methods to work with given plot. */
+    /* This class contains some static methods for creating plots,
+     * adding curves to them and perhaps saving them to files. */
     public static class PlotCreator
     {
+        // We save 2 basic sets of colors and labels (default + other)
+
         private static Color[] Colors1 = { Color.Green, Color.Red, Color.Blue };
         private static Color[] Colors2 = { Color.SpringGreen, Color.Orange, Color.Aqua };
 
@@ -22,27 +24,28 @@ namespace GUI.Plotting
                           lineWidth: 2, markerSize: 0);
         }
 
-        // param resultCurves contains x coords in 0th elem and then y coords for each curve
-        // have 2 color/label modes, depends on argument defaultThings
+        /* Gets List of coords lists and creates curves from them
+         * param resultCurves contains x-coords in 0th elem and then y-coords for each curve
+         * it has 2 color/label modes, depends on argument defaultSettings */
         public static void PrepareGraphSIR(ScottPlot.Plot pl, List<double[]> resultCurves,
-                                           bool defaultThings = true)
+                                           bool defaultSettings = true)
         {
-            var curveLabels = defaultThings ? Labels1 : Labels2;
-            var colors = defaultThings ? Colors1 : Colors2;
+            var curveLabels = defaultSettings ? Labels1 : Labels2;
+            var colors = defaultSettings ? Colors1 : Colors2;
             for (int i = 1; i < resultCurves.Count; i++)
             {
                 AddCurve(pl, resultCurves[0], resultCurves[i], curveLabels[i - 1], colors[i - 1]);
             }
         }
 
-        // Labels graph + saves it into the picture
+        /* Labels graph + saves it into the picture */
         public static async Task CreatePictureAsync(ScottPlot.Plot pl, string filePath, string title)
         {
             LabelGraph(pl, title);
             await Task.Run(() => { pl.SaveFig(filePath); });
         }
 
-        // Labels the graph given
+        /* Labels the graph given */
         public static void LabelGraph(ScottPlot.Plot pl, string title)
         {
             pl.Legend();

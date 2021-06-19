@@ -1,7 +1,7 @@
 ﻿
 namespace GUI
 {
-    partial class CreateModelForm
+    partial class CreativeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -93,7 +93,7 @@ namespace GUI
             this.TinfLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TinfLabel.AutoSize = true;
-            this.TinfLabel.Location = new System.Drawing.Point(34, 73);
+            this.TinfLabel.Location = new System.Drawing.Point(52, 69);
             this.TinfLabel.Name = "TinfLabel";
             this.TinfLabel.Size = new System.Drawing.Size(112, 20);
             this.TinfLabel.TabIndex = 2;
@@ -104,7 +104,7 @@ namespace GUI
             this.R0Label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.R0Label.AutoSize = true;
-            this.R0Label.Location = new System.Drawing.Point(67, 43);
+            this.R0Label.Location = new System.Drawing.Point(52, 46);
             this.R0Label.Name = "R0Label";
             this.R0Label.Size = new System.Drawing.Size(29, 20);
             this.R0Label.TabIndex = 3;
@@ -208,7 +208,7 @@ namespace GUI
             // 
             // EventsList
             // 
-            this.EventsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Parameter,
             this.Value,
@@ -239,7 +239,7 @@ namespace GUI
             // 
             // EventLabel
             // 
-            this.EventLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventLabel.AutoSize = true;
             this.EventLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EventLabel.Location = new System.Drawing.Point(700, 13);
@@ -250,7 +250,7 @@ namespace GUI
             // 
             // AddEventBtn
             // 
-            this.AddEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddEventBtn.Location = new System.Drawing.Point(896, 111);
             this.AddEventBtn.Name = "AddEventBtn";
             this.AddEventBtn.Size = new System.Drawing.Size(114, 30);
@@ -261,7 +261,7 @@ namespace GUI
             // 
             // EventValueTB
             // 
-            this.EventValueTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventValueTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventValueTB.Location = new System.Drawing.Point(896, 69);
             this.EventValueTB.Name = "EventValueTB";
             this.EventValueTB.Size = new System.Drawing.Size(114, 27);
@@ -269,7 +269,7 @@ namespace GUI
             // 
             // EventParamTB
             // 
-            this.EventParamTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventParamTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventParamTB.Location = new System.Drawing.Point(896, 17);
             this.EventParamTB.Name = "EventParamTB";
             this.EventParamTB.Size = new System.Drawing.Size(114, 27);
@@ -277,7 +277,7 @@ namespace GUI
             // 
             // EventTimeTB
             // 
-            this.EventTimeTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventTimeTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventTimeTB.Location = new System.Drawing.Point(896, 43);
             this.EventTimeTB.Name = "EventTimeTB";
             this.EventTimeTB.Size = new System.Drawing.Size(114, 27);
@@ -285,7 +285,7 @@ namespace GUI
             // 
             // EventValueLabel
             // 
-            this.EventValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventValueLabel.AutoSize = true;
             this.EventValueLabel.Location = new System.Drawing.Point(796, 72);
             this.EventValueLabel.Name = "EventValueLabel";
@@ -295,7 +295,7 @@ namespace GUI
             // 
             // EventTimeLabel
             // 
-            this.EventTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventTimeLabel.AutoSize = true;
             this.EventTimeLabel.Location = new System.Drawing.Point(796, 42);
             this.EventTimeLabel.Name = "EventTimeLabel";
@@ -305,7 +305,7 @@ namespace GUI
             // 
             // EventParamLabel
             // 
-            this.EventParamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.EventParamLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventParamLabel.AutoSize = true;
             this.EventParamLabel.Location = new System.Drawing.Point(796, 16);
             this.EventParamLabel.Name = "EventParamLabel";
@@ -336,7 +336,7 @@ namespace GUI
             this.TimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TimeLabel.AutoSize = true;
-            this.TimeLabel.Location = new System.Drawing.Point(67, 17);
+            this.TimeLabel.Location = new System.Drawing.Point(52, 20);
             this.TimeLabel.Name = "TimeLabel";
             this.TimeLabel.Size = new System.Drawing.Size(93, 20);
             this.TimeLabel.TabIndex = 26;
@@ -347,7 +347,7 @@ namespace GUI
             this.TimmuLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TimmuLabel.AutoSize = true;
-            this.TimmuLabel.Location = new System.Drawing.Point(34, 99);
+            this.TimmuLabel.Location = new System.Drawing.Point(52, 95);
             this.TimmuLabel.Name = "TimmuLabel";
             this.TimmuLabel.Size = new System.Drawing.Size(108, 20);
             this.TimmuLabel.TabIndex = 27;
@@ -355,7 +355,7 @@ namespace GUI
             // 
             // SimulateNewBtn
             // 
-            this.SimulateNewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SimulateNewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SimulateNewBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SimulateNewBtn.Location = new System.Drawing.Point(798, 398);
             this.SimulateNewBtn.Name = "SimulateNewBtn";
@@ -379,7 +379,7 @@ namespace GUI
             // 
             // AddToSameBtn
             // 
-            this.AddToSameBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddToSameBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddToSameBtn.Enabled = false;
             this.AddToSameBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AddToSameBtn.Location = new System.Drawing.Point(798, 446);
@@ -392,7 +392,7 @@ namespace GUI
             // 
             // RemoveEventBtn
             // 
-            this.RemoveEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemoveEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveEventBtn.Location = new System.Drawing.Point(763, 111);
             this.RemoveEventBtn.Name = "RemoveEventBtn";
             this.RemoveEventBtn.Size = new System.Drawing.Size(114, 30);

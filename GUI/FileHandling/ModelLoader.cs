@@ -21,10 +21,6 @@ namespace GUI.FileHandling
             return LoadMyFormatAsync(fileName);
         }
 
-        public static Task<BaseModel> LoadJson(string fileName)
-            // we do not want to switch threads here, that is job of the caller
-            => JsonSerialization.DeserializeModel(fileName);
-
         /* Loads the model from a file that was validated before */
         public static BaseModel LoadMyFormat(string fileName)
         {

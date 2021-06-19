@@ -2,6 +2,8 @@
 
 namespace GUI.Models
 {
+    /* This enum is here for purposes of distinguishing model types.
+     * and also extensibility (more possible model types) */
     public enum ModelType
     {
         [EnumMember(Value = "SIR")]

@@ -1,17 +1,11 @@
-﻿using GUI.FileHandling;
+﻿using GUI.Exceptions;
+using GUI.FileHandling;
 using GUI.Models;
-using GUI.Plotting;
-using GUI.Exceptions;
 using GUI.Simulators;
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -47,8 +41,20 @@ namespace GUI
             }
 
             List<string> modelPaths;
-            modelPaths = InputListParser.GetFilePaths(FileBrowser.Path);
-            // TODO - print a number of paths received
+            try
+            {
+                modelPaths = InputListParser.GetFilePaths(FileBrowser.Path);
+                // TODO - print a number of paths received
+            }
+            catch (BadPathException exc)
+            {
+                // Displays the MessageBox with error
+                string message = $"One of the paths is invalid: {exc.Message}";
+                string caption = "Error";
+                MessageBox.Show(message, caption);
+                StartButton.Enabled = true;
+                return;
+            }
 
             if (modelPaths.Count() == 0)
             {
@@ -67,7 +73,7 @@ namespace GUI
                 BaseModel model;
                 try
                 {
-                    // TODO - more data types
+                    // TODO maybe - more input file types
                     model = await ModelLoader.LoadModel(path);
                     model.ID = id;
                     id++;
@@ -75,7 +81,7 @@ namespace GUI
                 // TODO - check if other exceptions arent possible 
                 catch (BadModelFormatException exc)
                 {
-                    ErrorProviderFormat.SetError(FileBrowser, exc.Message);
+                    ErrorProviderFormat.SetError(FileBrowser, exc.Message); // just minor error
                     counter++;
                     continue;
                 }
@@ -108,7 +114,7 @@ namespace GUI
 
         private void CreateModelBtn_Click(object sender, EventArgs e)
         {
-            var frm = new CreateModelForm();
+            var frm = new CreativeForm();
             frm.Location = Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { Close(); };

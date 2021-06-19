@@ -1,6 +1,7 @@
 ﻿
 namespace GUI.Models
 {
+    /* Most elemental model type, immunity holds forever */
     public class SirModel : BaseModel
     {
         public SirModel()

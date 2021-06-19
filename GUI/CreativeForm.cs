@@ -1,28 +1,23 @@
 ﻿using GUI.Models;
-using GUI.Plotting;
 using GUI.Simulators;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class CreateModelForm : Form
+    /* This window contains some kind of "Creative mode", where user can
+     * create new model with events and display it, or compare models visually */
+    public partial class CreativeForm : Form
     {
-        private BaseModel model;
-
-        public CreateModelForm()
+        public CreativeForm()
         {
             InitializeComponent();
-            TimmuTB.Text = "-1";
+            TimmuTB.Text = "-1"; // default value
         }
 
+        /* Tries to parse integer, saves value into num, shows error message if invalid */
         private bool CanBeParsedInt(out int num, string str, string paramName)
         {
             bool succ = int.TryParse(str, out num);
@@ -35,9 +30,10 @@ namespace GUI
             return succ;
         }
 
+        /* Tries to parse double, saves value into num, shows error message if invalid */
         private bool CanBeParsedDouble(out double num, string str, string paramName)
         {
-            str = str.Replace('.', ',');
+            str = str.Replace('.', ','); // so that double parsing is ok with '.'
             bool succ = double.TryParse(str, out num);
             if (!succ)
             {
@@ -48,6 +44,7 @@ namespace GUI
             return succ;
         }
 
+        /* Tries to parse ParameterType, saves value into param, shows error message if invalid */
         private bool CanBeParsedParamType(out ParameterType param, string str)
         {
             bool succ = Enum.TryParse(str, out param);
@@ -61,6 +58,8 @@ namespace GUI
             return succ;
         }
 
+        /* Takes inputs from all the text boxes, checks if they are valid
+         * If valid, they are saved to model out parameter */
         private bool ParseInput(out BaseModel model)
         {
             model = new SirModel(); // just a placeholder, so that we can return early
@@ -128,6 +127,15 @@ namespace GUI
                 return false;
             }
 
+            if (pop < 0 || r0 < 0 || time < 0 || timeInf < 0 || s < 0 || i < 0 || r < 0)
+            {
+                string message = "None of the values can be negative.";
+                string caption = "Error";
+                MessageBox.Show(message, caption);
+                return false;
+            }
+
+            // things look like they are valid, lets save them
             model.PopulationSize = pop;
             model.R0 = r0;
             model.TimeToSimulate = time;
@@ -136,13 +144,13 @@ namespace GUI
             model.InfectedInit = i;
             model.RemovedInit = r;
 
-            // lets now save events (they are validated during creation)
+            // lets now save the events (they are validated during creation)
             foreach (var eventItem in EventsList.Items)
             {
                 ListViewItem item = (ListViewItem)eventItem;
                 ParameterType param = Enum.Parse<ParameterType>(item.Text);
 
-                // check that no Timmu is in events if we have SIRS
+                // check that no Timmu is in events if we have just SIR
                 if (model.Type == ModelType.SIR && param == ParameterType.Timmu)
                 {
                     string message = "There cant be event with Timmu for SIR model.";
@@ -155,16 +163,23 @@ namespace GUI
 
                 model.Events.Add((param, eventTime, newVal));
             }
+            // at the end we will sort the events by time
+            model.Events = model.Events.OrderBy(triplet => triplet.time).ToList();
             return true;
         }
 
+        /* Collects inputs, simulates model and displays it into cleared area */
         private async void SimulateNewBtn_Click(object sender, EventArgs e)
         {
             AddToSameBtn.Enabled = false;
             SimulateNewBtn.Enabled = false;
 
             BaseModel model;
-            if (!ParseInput(out model)) { return; }
+            if (!ParseInput(out model)) 
+            {
+                SimulateNewBtn.Enabled = true;
+                return; 
+            }
 
             // simulate
             var simulator = new Simulator(model);
@@ -175,26 +190,33 @@ namespace GUI
             PlotCreator.PrepareGraphSIR(PlotWindow.Plot, resultCurves);
             PlotCreator.LabelGraph(PlotWindow.Plot, "New Graph");
 
-            // enable button for adding another graph to this one
+            // enable button for adding another graph to this one, reenable current button
             AddToSameBtn.Enabled = true;
             SimulateNewBtn.Enabled = true;
         }
 
+        /* Collects inputs, simulates model and displays it into the same area
+         * that the previous model is displayed - can be used for comparing */
         private async void AddToSameBtn_Click(object sender, EventArgs e)
         {
             AddToSameBtn.Enabled = false;
             BaseModel model;
-            if (!ParseInput(out model)) { return; }
+            if (!ParseInput(out model)) 
+            {
+                AddToSameBtn.Enabled = true;
+                return; 
+            }
 
             // simulate
             var simulator = new Simulator(model);
             var resultCurves = await simulator.SimulateAsync(model.TimeToSimulate, 0.1);
 
             // append the new curves to the same graph, with different colors/labels
-            PlotCreator.PrepareGraphSIR(PlotWindow.Plot, resultCurves, defaultThings: false);
+            PlotCreator.PrepareGraphSIR(PlotWindow.Plot, resultCurves, defaultSettings: false);
             PlotCreator.LabelGraph(PlotWindow.Plot, "Combined Graph");
         }
 
+        /* Collects 3 event inputs, checks them and adds new event to the list */
         private void AddEventBtn_Click(object sender, EventArgs e)
         {
             // check that values are provided
@@ -218,21 +240,33 @@ namespace GUI
                 return; // error message handled separately in the function
             }
 
-            // save results into the list
+            // save results into the eventList
             ListViewItem item = new ListViewItem(EventParamTB.Text);
             item.SubItems.Add(EventValueTB.Text);
             item.SubItems.Add(EventTimeTB.Text);
             EventsList.Items.Add(item);
 
-            // and now clear the text boxes
+            // and lastly clear the text boxes
             EventParamTB.Text = "";
             EventValueTB.Text = "";
             EventTimeTB.Text = "";
         }
 
+        /* Removes all selected items from the eventList */
         private void RemoveEventBtn_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (EventsList.SelectedItems.Count == 0)
+            {
+                string message = "None items were selected.";
+                string caption = "Message";
+                MessageBox.Show(message, caption);
+            }
+
+            foreach (var selectedItem in EventsList.SelectedItems)
+            {
+                EventsList.Items.Remove((ListViewItem) selectedItem);
+            }
+            EventsList.SelectedItems.Clear();
         }
     }
 }

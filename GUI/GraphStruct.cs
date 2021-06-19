@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace GUI
 {
+    /* Structure that holds all needed information about created graphs
+     * It holds coords for curves, title and model params from which it was created */
     public class GraphStruct
     {
         public List<double[]> Coords { get; private set; }
         public string Title { get; private set; }
-
-        // model to store and access the parameters
-        public BaseModel Model { get; set; }
-
+        public BaseModel Model { get; set; } // model to store/access the parameters
 
         public GraphStruct(List<double[]> coords, string title, BaseModel model)
         {
@@ -18,8 +17,5 @@ namespace GUI
             Title = title;
             Model = model;
         }
-
-        public GraphStruct()
-            => Coords = new List<double[]>();
     }
 }
