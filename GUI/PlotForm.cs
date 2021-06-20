@@ -1,10 +1,10 @@
-﻿using GUI.Models;
+﻿using Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GUI
+namespace Project
 {
     public partial class PlotForm : Form
     {

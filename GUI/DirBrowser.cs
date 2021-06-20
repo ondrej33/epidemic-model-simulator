@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace GUI
+namespace Project
 {
     public partial class DirBrowser : UserControl
     {

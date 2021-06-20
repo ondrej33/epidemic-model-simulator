@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GUI.Exceptions
+namespace Project.Exceptions
 {
     class BadModelFormatException : Exception
     {

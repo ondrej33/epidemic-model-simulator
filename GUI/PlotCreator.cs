@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 
-namespace GUI
+namespace Project
 {
     /* This class contains some static methods for creating plots,
      * adding curves to them and perhaps saving them to files. */

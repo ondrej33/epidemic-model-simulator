@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GUI.Simulators
+namespace Project.Simulators
 {
     /* This is an interface for all possible simulators
      * I included this in the project, because I plan to create more types

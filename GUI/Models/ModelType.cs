@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace GUI.Models
+namespace Project.Models
 {
     /* This enum is here for purposes of distinguishing model types.
      * and also extensibility (more possible model types) */

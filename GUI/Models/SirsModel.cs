@@ -1,5 +1,5 @@
 ﻿
-namespace GUI.Models
+namespace Project.Models
 {
     /* Similar to SIR, but immunity vanishes over time */
     public class SirsModel : SirModel

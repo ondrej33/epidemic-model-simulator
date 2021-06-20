@@ -1,11 +1,11 @@
-﻿using GUI.Models;
-using GUI.Simulators;
+﻿using Project.Models;
+using Project.Simulators;
 using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GUI
+namespace Project
 {
     /* This window contains some kind of "Creative mode", where user can
      * create new model with events and display it, or compare models visually */

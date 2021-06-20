@@ -1,12 +1,12 @@
-﻿using GUI.Models;
-using GUI.Exceptions;
+﻿using Project.Models;
+using Project.Exceptions;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace GUI.FileHandling
+namespace Project.FileHandling
 {
     public class ModelLoader
     {
@@ -29,6 +29,7 @@ namespace GUI.FileHandling
 
             // define the regexes
             var SirsTypeRegex = new Regex(@"ModelType:[ ]*SIRS");
+            var IDRegex = new Regex(@"ID:[ ]*(\d+)");
             var NRegex = new Regex(@"N:[ ]*(\d+)");
             var TinfRegex = new Regex(@"Tinf:[ ]*(\d+)");
             var R0Regex = new Regex(@"R0:[ ]*(\d+(\.\d+)?)");
@@ -62,6 +63,7 @@ namespace GUI.FileHandling
             }
 
             // find the other regex matches
+            var IDMatch = IDRegex.Match(fileContent);
             var NMatch = NRegex.Match(fileContent);
             var TinfMatch = TinfRegex.Match(fileContent);
             var R0Match = R0Regex.Match(fileContent);
@@ -72,6 +74,7 @@ namespace GUI.FileHandling
             var eventMatches = eventRegex.Matches(fileContent);
 
             // and put the values to the model
+            model.ID = int.Parse(IDMatch.Groups[1].Value);
             model.PopulationSize = int.Parse(NMatch.Groups[1].Value);
             model.TimeInfection = int.Parse(TinfMatch.Groups[1].Value);
             model.R0 = double.Parse(R0Match.Groups[1].Value.Replace('.', ','));

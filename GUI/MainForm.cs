@@ -1,7 +1,7 @@
-﻿using GUI.Exceptions;
-using GUI.FileHandling;
-using GUI.Models;
-using GUI.Simulators;
+﻿using Project.Exceptions;
+using Project.FileHandling;
+using Project.Models;
+using Project.Simulators;
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 
-namespace GUI
+namespace Project
 {
     public partial class MainForm : Form
     {
@@ -36,6 +36,10 @@ namespace GUI
             StartButton.Enabled = false;
             InteractiveResultsBtn.Enabled = false;
             ListGraphs.Clear();
+
+            // We set current dir to project dir so that correct relative paths could be used too
+            var projDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            Directory.SetCurrentDirectory(projDir);
 
             if (!File.Exists(InputFileBrowser.Path))
             {
@@ -73,7 +77,6 @@ namespace GUI
             }
 
             // we will iterate through all models
-            int id = 0;
             int counter = 0;
             foreach (var path in modelPaths)
             {
@@ -82,8 +85,6 @@ namespace GUI
                 try
                 {
                     model = await ModelLoader.LoadModel(path);
-                    model.ID = id;
-                    id++;
                 }
                 // TODO - check if other exceptions arent possible 
                 catch (BadModelFormatException exc)
@@ -101,8 +102,8 @@ namespace GUI
                 ScottPlot.Plot plot = new ScottPlot.Plot(1080, 720);
                 PlotCreator.PrepareGraphSIR(plot, resultCurves);
 
-                string graphTitle = model.Type.ToString() + $" (id={model.ID})";
-                string graphFileName = OutputDirBrowser.DirPath + $"picture{model.ID}_{model.Type}.png";
+                string graphTitle = model.Type.ToString() + $" model , ID={model.ID} ";
+                string graphFileName = OutputDirBrowser.DirPath + $"\\picture{model.ID}_{model.Type}.png";
                 await PlotCreator.CreatePictureAsync(plot, graphFileName, graphTitle);
 
                 // and update the progress

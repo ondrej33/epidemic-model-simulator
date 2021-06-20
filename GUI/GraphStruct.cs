@@ -1,7 +1,7 @@
-﻿using GUI.Models;
+﻿using Project.Models;
 using System.Collections.Generic;
 
-namespace GUI
+namespace Project
 {
     /* Structure that holds all needed information about created graphs
      * It holds coords for curves, title and model params from which it was created */

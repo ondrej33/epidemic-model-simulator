@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace GUI.Models
+namespace Project.Models
 {
-    /* Base class for SIR and SIRS models, and possibly many more */
+    /* Base class for all kinds of models that might appear in future */
     public abstract class BaseModel
     {
         public ModelType Type { get; set; } // SIR, SIRS...

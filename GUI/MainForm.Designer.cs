@@ -1,5 +1,5 @@
 ﻿
-namespace GUI
+namespace Project
 {
     partial class MainForm
     {
@@ -30,7 +30,7 @@ namespace GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.InputFileBrowser = new GUI.FileBrowser();
+            this.InputFileBrowser = new Project.FileBrowser();
             this.StartButton = new System.Windows.Forms.Button();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.ProgressLabel = new System.Windows.Forms.Label();
@@ -38,7 +38,7 @@ namespace GUI
             this.CreativeModeBtn = new System.Windows.Forms.Button();
             this.InteractiveResultsBtn = new System.Windows.Forms.Button();
             this.InputLabel = new System.Windows.Forms.Label();
-            this.OutputDirBrowser = new GUI.DirBrowser();
+            this.OutputDirBrowser = new Project.DirBrowser();
             this.OutputLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProviderFormat)).BeginInit();
             this.SuspendLayout();

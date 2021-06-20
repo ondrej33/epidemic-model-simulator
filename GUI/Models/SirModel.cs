@@ -1,7 +1,7 @@
 ﻿
-namespace GUI.Models
+namespace Project.Models
 {
-    /* Most elemental model type, immunity holds forever */
+    /* Most elemental model type, 3 groups, immunity holds forever */
     public class SirModel : BaseModel
     {
         public SirModel()

@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 
 
-namespace GUI.FileHandling
+namespace Project.FileHandling
 {
     /* Validates the format of file with model description, 
      * at this time accepts SIR and SIRS model types */
@@ -16,6 +16,7 @@ namespace GUI.FileHandling
             // Sir and Sirs are very similar, only differs in type and Timmu (which is missing in Sir)
 
             var patternSIR = new Regex(@"\AModelType:[ ]*SIR[ ]*(\n|\r\n)" +
+                                       @"ID:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                        @"-[ ]*(\n|\r\n)" +
                                        @"N:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                        @"Tinf:[ ]*(\d)+[ ]*(\n|\r\n)" +
@@ -28,6 +29,7 @@ namespace GUI.FileHandling
                                        @"(Event:[ ]*(\d+)+[ ]*,[ ]*(R0[ ]*=[ ]*(\d+(\.\d+)?)|(Tinf)[ ]*=[ ]*(\d+))[ ]*(?:\n|\r\n|$))*\Z");
 
             var patternSIRS = new Regex(@"\AModelType:[ ]*SIRS[ ]*(\n|\r\n)" +
+                                        @"ID:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"-[ ]*(\n|\r\n)" +
                                         @"N:[ ]*(\d)+[ ]*(\n|\r\n)" +
                                         @"Tinf:[ ]*(\d)+[ ]*(\n|\r\n)" +

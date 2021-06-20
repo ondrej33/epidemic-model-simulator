@@ -1,5 +1,5 @@
 ﻿
-namespace GUI
+namespace Project
 {
     partial class FileBrowser
     {
