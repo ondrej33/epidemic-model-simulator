@@ -1,4 +1,4 @@
-# Epidemic_model_simulator
+# Epidemic model simulator
 
 Simulator for simple epidemic models like SIR, SIRS, SEIR. Allows the user to specify initial conditions, parameters and also time events.
 
